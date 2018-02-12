@@ -27,7 +27,7 @@ TAKES = 10
 SESSLIMIT = 50
 
 # amount of sessions within the training sample
-TRAINSIZE = 20000
+TRAINSIZE = 2000
 
 # amount of session within the testing sample
-TESTSIZE = 5000
+TESTSIZE = 500

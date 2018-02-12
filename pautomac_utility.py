@@ -240,6 +240,9 @@ def evaluate((_, s0, md), inpath, oupath):
     for sess in sessionize(inpath):
         ss, sp = s0, 1.
         for sy in sess:
+            if ss not in md:
+                sp = 0.
+                break
             if not md[ss]:
                 sp = 0.
                 break

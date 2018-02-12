@@ -3,24 +3,21 @@
 
 __author__ = 'Gaetano "Gibbster" Pellegrino'
 
-
 """
 Utility to work with Pautomac suite. All it is required to load and store sequences, models, etc.
 """
-
 
 import random as rn
 import numpy as np
 from scipy import stats as ts
 
-
 # seed for random number generation
 SEED = 1984
 # maximal session length allowd when sampling
 SESSLIMIT = 50
-# minimal probability (session probability must not be 0 otherwise perplexity returns infinite.
-# so we set a minmal very low probability instead of 0
-MINPROB = 1e-10
+# # minimal probability (session probability must not be 0 otherwise perplexity returns infinite.
+# # so we set a minmal very low probability instead of 0
+# MINPROB = 1e-10
 # meta-information accessors
 # ---------------------------
 # average string size
@@ -101,6 +98,17 @@ def meta(path):
     return metas
 
 
+# given a pautomac training/testing sample, it convert it to the sliding window version with size wsize.
+# the output file, stored in oupath, has the pautomac format
+def toslided(inpath, wsize, oupath):
+    metas = meta(inpath)
+    with open(oupath, "w") as oh:
+        oh.write(str(metas[LEN] - wsize + 1) + " " + str(metas[ALPHA]))
+        for window in windowize(inpath, wsize):
+            oh.write("\n" + str(wsize) + " ")
+            oh.write(" ".join(window))
+
+
 # given a pautomac training/testing file, exports it to the RTI+ format.
 # rb is the percentage of correct bounds included into the exported file; it is a value in [0.0,1.0],
 # if set < 1.0, the remaining bounds are set by random.
@@ -138,48 +146,54 @@ def torti(inpath, oupath, rb=1.):
             ind += 1
 
 
-# load a pautomac PDFA in memory as a tuple (alphabet_size, dict)
+# load a pautomac PDFA in memory as a tuple (alphabet_size, start_state, dict)
 # where dict is a dictionary of states. Each state has a list of transitions.
 # Each transition is a triple (destination_state, symbol, probability).
 # The initial state is always state 0.
 # NB.: it only works with PDFAs of Pautomac suite.
 def mdload(path):
-    md, trans, probs, asize = {}, {}, {}, 0
+    md, trans, probs, sigma, s0 = {}, {}, {}, set(), 0
     with open(path, "r") as mh:
-        state = ""
+        parse_state = "I"
         for line in mh:
             line = line.strip()
-            if line[0] == 'S':
-                state = 'S'
-            elif line[0] == 'T':
-                state = 'T'
-            elif line[0] not in {"I", "F"}:
-                fields = line.split(' ')
+            if line[0] == "I":
+                parse_state = "I"
+            elif line[0] == "S":
+                parse_state = "S"
+            elif line[0] == "T":
+                parse_state = "T"
+            elif line[0] == "F":
+                parse_state = "F"
+            else:
+                fields = line.split(" ")
                 prob = float(fields[1])
-                syms = map(int, fields[0].translate(None, '()').split(','))
-                if state == 'S':
+                syms = map(int, fields[0].translate(None, "()").split(","))
+                if parse_state == "I":
+                    s0 = syms[0]
+                elif parse_state == "S":
                     st, sy = syms[0], str(syms[1])
                     probs[(st, sy)] = prob
                     if st not in md:
                         md[st] = []
-                    if int(sy) >= asize:
-                        asize += 1
-                elif state == 'T':
+                    sigma.add(sy)
+                elif parse_state == "T":
                     ss, sy, ds = syms[0], str(syms[1]), syms[2]
                     if ss not in md:
                         md[ss] = []
                     if ds not in md:
                         md[ds] = []
-                    if int(sy) >= asize:
-                        asize += 1
+                    sigma.add(sy)
                     md[ss].append((ds, sy, probs[(ss, sy)]))
-    return (asize, md)
+    return sigma, s0, md
 
 
 # given a model loaded with mdload(), it converts it to dot format and store it at path.
-def mdtodot((_, md), path):
+def mdtodot((_, s0, md), path):
     with open(path, "w") as eh:
         eh.write("digraph a {")
+        eh.write("\n<q0> [shape=point];")
+        eh.write("\n\t<q0> -> " + str(s0) + ";")
         for sta in md:
             ln = "\n" + str(sta) + " [shape=circle, label=\"" + str(sta) + "\"];"
             eh.write(ln)
@@ -190,15 +204,15 @@ def mdtodot((_, md), path):
 
 
 # given a model loaded with mdload(), it generate howmany sessions and store them in path in the pautomac format
-def sample((asize, md), howmany, path):
+def sample((sigma, s0, md), howmany, path):
     rn.seed(SEED)
     np.random.seed(SEED)
     with open(path, "w") as sh:
         # writing the header
-        sh.write(str(howmany) + " " + str(asize))
+        sh.write(str(howmany) + " " + str(len(sigma)))
         # generating and writing the body
         for _ in xrange(howmany):
-            ss, sess = 0, []
+            ss, sess = s0, []
             # generating a session (sess)
             ms = rn.randint(1, SESSLIMIT)
             for _ in xrange(ms):
@@ -218,15 +232,16 @@ def sample((asize, md), howmany, path):
 
 
 # given a model loaded with mdload(), a sample in Pautomac format stored in inpath,
-# it computes the distribution of the sample according to the model, and stores it in oupath.
-def evaluate((_, md), inpath, oupath):
+# it computes the probability of each session in the sample according to the model, and stores it in oupath.
+# PLEASE NOTE: those probabilities does not form a distribution, and no smoothing is applied.
+def evaluate((_, s0, md), inpath, oupath):
     # first, we gather probabilities for each session in sample
     dis = []
     for sess in sessionize(inpath):
-        ss, sp = 0, 1.
+        ss, sp = s0, 1.
         for sy in sess:
             if not md[ss]:
-                sp *= MINPROB
+                sp = 0.
                 break
             # now we look for the right transition
             ds, pr = -1, 0.
@@ -236,11 +251,10 @@ def evaluate((_, md), inpath, oupath):
                     break
             # now we update session probability and next state
             ss, sp = ds, sp * pr
-        # if probability of sess is 0, we rather return MINPROB
         dis.append(sp)
-    # we normalize the distribution
-    sm = sum(dis)
-    dis = [vl / float(sm) for vl in dis]
+    # # we normalize the distribution
+    # sm = sum(dis)
+    # dis = [vl / float(sm) for vl in dis]
     # finally, we store the values
     with open(oupath, "w") as oh:
         oh.write(str(len(dis)))
@@ -255,6 +269,7 @@ if __name__ == "__main__":
     d = "/home/nino/Scrivania/canc.dot"
     s = "/home/nino/Scrivania/canc.sample"
     e = "/home/nino/Scrivania/canc.eval"
+    w = "/home/nino/Scrivania/canc.sw"
     # i = 0
     # for v in streamize(p):
     #     i += 1
@@ -266,8 +281,9 @@ if __name__ == "__main__":
     # for w in sessionize(p):
     #     print w
     # torti(p, r, .3)
-    x = mdload(m)
-    print x
+    # x = mdload(m)
+    # print x
     # sample(x, 100, s)
     # mdtodot(x, d)
-    evaluate(x, s, e)
+    # evaluate(x, s, e)
+    toslided(p, 4, w)

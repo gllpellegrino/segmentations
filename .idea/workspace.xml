@@ -2,9 +2,649 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3248e137-3a45-43a3-b4f3-ba4a59efa549" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/segmentation.iml" afterPath="$PROJECT_DIR$/.idea/segmentation.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/exp1/analyze.py" afterPath="$PROJECT_DIR$/exp1/analyze.py" />
-      <change beforePath="$PROJECT_DIR$/exp1/meta.py" afterPath="$PROJECT_DIR$/exp1/meta.py" />
+      <change beforePath="$PROJECT_DIR$/exp1/evaluate.py" afterPath="$PROJECT_DIR$/exp1/evaluate.py" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/gold/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/gold/test.ptm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/gold/train.ptm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_0/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_10/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_100/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_15/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_20/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_25/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_30/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_35/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_40/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_45/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_5/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_50/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_55/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_60/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_65/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_70/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_75/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_80/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_85/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_90/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_0/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_0/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_0/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_1/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_1/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_1/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_2/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_2/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_2/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_3/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_3/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_3/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_4/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_4/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_4/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_5/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_5/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_5/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_6/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_6/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_6/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_7/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_7/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_7/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_8/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_8/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_8/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_9/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_9/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/seg_95/take_9/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/sw/model.rtimd" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/sw/solution.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/sw/train.ptm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/results/sw/train.rti" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/exp1/setup.py" afterPath="$PROJECT_DIR$/exp1/setup.py" />
+      <change beforePath="$PROJECT_DIR$/pautomac_utility.py" afterPath="$PROJECT_DIR$/old/pautomac_utility.py" />
+      <change beforePath="$PROJECT_DIR$/rti_utility.py" afterPath="$PROJECT_DIR$/exp1/rti_utility.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,36 +655,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="analyze.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/exp1/analyze.py">
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exp2/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="60" column="16" lean-forward="true" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#134#154#0" expanded="true" />
+                <element signature="e#123#145#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exp1/evaluate.py">
+      <file leaf-file-name="rti_utility.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rti_utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="71" column="44" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="71" selection-end-column="44" />
+            <state relative-caret-position="374">
+              <caret line="68" column="75" lean-forward="false" selection-start-line="68" selection-start-column="75" selection-end-line="68" selection-end-column="75" />
               <folding>
-                <element signature="e#161#183#0" expanded="true" />
+                <element signature="e#150#159#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="meta.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exp1/meta.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -52,8 +682,8 @@
       <file leaf-file-name="pautomac_utility.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pautomac_utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="266">
+              <caret line="185" column="12" lean-forward="false" selection-start-line="185" selection-start-column="12" selection-end-line="185" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -82,27 +712,31 @@
       <list>
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/exp1/pautomac_utility.py" />
-        <option value="$PROJECT_DIR$/canc.py" />
         <option value="$PROJECT_DIR$/exp1/creation.py" />
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/exp1/setup.py" />
         <option value="$PROJECT_DIR$/canc.rti" />
-        <option value="$PROJECT_DIR$/rti_utility.py" />
         <option value="$PROJECT_DIR$/exp1/results/train.py" />
         <option value="$PROJECT_DIR$/exp1/train.py" />
         <option value="$PROJECT_DIR$/exp1/evaluate.py" />
-        <option value="$PROJECT_DIR$/pautomac_utility.py" />
         <option value="$PROJECT_DIR$/exp1/analize.py" />
         <option value="$PROJECT_DIR$/exp1/meta.py" />
         <option value="$PROJECT_DIR$/exp1/analyze.py" />
+        <option value="$PROJECT_DIR$/canc.py" />
+        <option value="$PROJECT_DIR$/pautomac_utility_v2.py" />
+        <option value="$PROJECT_DIR$/old/pautomac_utility.py" />
+        <option value="$PROJECT_DIR$/exp2/meta.py" />
+        <option value="$PROJECT_DIR$/exp2/setup.py" />
+        <option value="$PROJECT_DIR$/pautomac_utility.py" />
+        <option value="$PROJECT_DIR$/rti_utility.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="27" />
-    <option name="width" value="1533" />
-    <option name="height" value="873" />
+    <option name="x" value="274" />
+    <option name="y" value="97" />
+    <option name="width" value="1523" />
+    <option name="height" value="856" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -129,6 +763,11 @@
               <item name="segmentation" type="b2602c69:ProjectViewProjectNode" />
               <item name="segmentation" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="segmentation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="segmentation" type="462c0819:PsiDirectoryNode" />
+              <item name="exp2" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -141,13 +780,15 @@
     <property name="last_opened_file_path" value="/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/Backup Portatile TUD 25_01_16/LEMMA/pautomac_experiment" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/exp1" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/exp1" />
+      <recent name="$PROJECT_DIR$/old" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/exp2" />
+      <recent name="$PROJECT_DIR$/exp1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -162,7 +803,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.analyze">
+  <component name="RunManager" selected="Python.rti_utility">
     <configuration name="analyze" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -176,24 +817,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="segmentation" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp1/analyze.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="creation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exp1" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="segmentation" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp1/setup.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -217,6 +840,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="pautomac_utility_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="segmentation" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pautomac_utility.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="rti_utility" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -235,38 +876,38 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="setup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exp1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exp2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="segmentation" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp1/train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp2/setup.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.creation" />
-      <item index="1" class="java.lang.String" itemvalue="Python.rti_utility" />
-      <item index="2" class="java.lang.String" itemvalue="Python.train" />
-      <item index="3" class="java.lang.String" itemvalue="Python.evaluate" />
-      <item index="4" class="java.lang.String" itemvalue="Python.analyze" />
+      <item index="0" class="java.lang.String" itemvalue="Python.evaluate" />
+      <item index="1" class="java.lang.String" itemvalue="Python.analyze" />
+      <item index="2" class="java.lang.String" itemvalue="Python.pautomac_utility_v2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.setup" />
+      <item index="4" class="java.lang.String" itemvalue="Python.rti_utility" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.analyze" />
-        <item index="1" class="java.lang.String" itemvalue="Python.evaluate" />
-        <item index="2" class="java.lang.String" itemvalue="Python.train" />
-        <item index="3" class="java.lang.String" itemvalue="Python.rti_utility" />
-        <item index="4" class="java.lang.String" itemvalue="Python.creation" />
+        <item index="0" class="java.lang.String" itemvalue="Python.rti_utility" />
+        <item index="1" class="java.lang.String" itemvalue="Python.setup" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pautomac_utility_v2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.analyze" />
+        <item index="4" class="java.lang.String" itemvalue="Python.evaluate" />
       </list>
     </recent_temporary>
   </component>
@@ -326,153 +967,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/2/2.pautomac_model.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/12/12.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/32/32.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/2/2.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-359670">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="654">
-            <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/22/22.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1799699">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/17/17.pautomac.test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="2774" column="0" lean-forward="false" selection-start-line="2774" selection-start-column="0" selection-end-line="2774" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/24/24.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/9/9.pautomac_solution.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/24/24.pautomac_solution.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17518">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/canc.py" />
-    <entry file="file://$PROJECT_DIR$/pautomac/11/11.pautomac_model.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/32/32.pautomac_model.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exp1/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/10/10.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/10/10.pautomac.test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/30/30.pautomac.train">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pautomac/35/35.pautomac.train">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -547,13 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac/24/24.pautomac_model.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/canc.rti" />
     <entry file="file://$PROJECT_DIR$/exp1/results/sw/model.rtimd">
       <provider selected="true" editor-type-id="text-editor">
@@ -580,6 +1067,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="52" selection-end-column="38" />
+          <folding>
+            <element signature="e#123#145#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -587,6 +1077,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="55" column="10" lean-forward="false" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -612,25 +1103,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rti_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="878">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pautomac_utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exp1/meta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -640,7 +1116,7 @@
         <state relative-caret-position="421">
           <caret line="71" column="44" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="71" selection-end-column="44" />
           <folding>
-            <element signature="e#161#183#0" expanded="true" />
+            <element signature="e#161#183#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -650,7 +1126,203 @@
         <state relative-caret-position="486">
           <caret line="60" column="16" lean-forward="true" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
           <folding>
-            <element signature="e#134#154#0" expanded="true" />
+            <element signature="e#134#154#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac/34/34.pautomac_model.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9214">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="936" column="0" lean-forward="false" selection-start-line="936" selection-start-column="0" selection-end-line="936" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac/24/24.pautomac.train">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac/36/36.pautomac.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac/24/24.pautomac_model.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="70" column="18" lean-forward="true" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old/pautomac_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="65" lean-forward="false" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac/36/36.pautomac_model.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/1/gold/test.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/1/sw/train.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/1/seg_10/take_0/train.rti">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/1/seg_30/take_9/train.rti">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/1/gold/train.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/meta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="55" lean-forward="false" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp1/rti_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/10/gold/train.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/10/gold/test.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="842">
+          <caret line="62" column="26" lean-forward="false" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/results/24/gold/train.ptm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pautomac_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="185" column="12" lean-forward="false" selection-start-line="185" selection-start-column="12" selection-end-line="185" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Scrivania/canc.rtimod">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="904">
+          <caret line="75" column="21" lean-forward="false" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exp2/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#123#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rti_utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="68" column="75" lean-forward="false" selection-start-line="68" selection-start-column="75" selection-end-line="68" selection-end-column="75" />
+          <folding>
+            <element signature="e#150#159#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -10,7 +10,7 @@ Utility to generate the distributions of the models learned by using train.py
 
 
 import exp1.meta as mt
-import pautomac_utility as pu
+from old import pautomac_utility as pu
 import rti_utility as ru
 import os
 

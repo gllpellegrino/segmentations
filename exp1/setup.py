@@ -23,7 +23,7 @@ the training sample, and the evaluation.
 
 
 import exp1.meta as mt
-import pautomac_utility as pu
+from old import pautomac_utility as pu
 from os import mkdir, walk, rmdir, remove
 from os.path import exists, join
 

@@ -8,6 +8,7 @@ Utility to deal with RTI+ (training models, interpreting the output).
 
 import re
 import os
+import pickle as pk
 
 # regular expressions
 RTI_STATE_RE = "^(-?\d+) prob: symbol=(( \d+)+)"
@@ -41,7 +42,7 @@ def mdload(path):
                         omega[(st, i)] = probs[i]
             mc = trp.match(line)
             if mc is not None:
-                ss, sy, ds = int(mc.group(1)),int(mc.group(2)), int(mc.group(5))
+                ss, sy, ds = int(mc.group(1)), int(mc.group(2)), int(mc.group(5))
                 # and we skip transitions to and from the sink state
                 # furthermore, we drop imposible transitions (with probability = 0)
                 if ss >= 0 and ds >= 0 and omega[(ss, sy)] > 0.:
@@ -61,13 +62,50 @@ def mdload(path):
     return i, f, s, t
 
 
+# given a RTI+ training file, it generates all the sessions (strings).
+def sessionize(path):
+    with open(path, "r") as th:
+        th.readline()
+        for line in th:
+            yield map(int, line.strip().split(" "))[1::2]
+
+
 # given a model loaded from RTI+ output, hence by calling mdload() of this module, and given a RTI+ training
-# sample referenced by path, this module estimates the final probability since the output of RTI+ does not provide
-# such an information
-def finprobs((i, f, s, t), path):
-    probs = {}
-    # @todo ci serve prima l'iteratore che ci fottiamo dall'altro progetto.
-    return probs
+# sample referenced by inpath, this module estimates the final probability since the output of RTI+ does not provide
+# such an information.
+# It stores a binary with the updated model in rstpath
+def restimate((i, f, s, t), inpath, rstpath):
+    probs = [[0, 0] for _ in xrange(len(i))]
+    # setting the initial state
+    ss = -1
+    for ix in xrange(len(i)):
+        if i[ix] > 0.:
+            ss = ix
+            break
+    # now we collect how many times we pass through each state, and how many time we stop in each state
+    for sess in sessionize(inpath):
+        cs = ss
+        for ix in xrange(len(sess)):
+            # updating amount of times we reached state cs, and the amount of times we end in cs
+            probs[cs][1] += 1
+            if ix == len(sess) - 1:
+                probs[cs][0] += 1
+            # now we move to the next state
+            sy, ns = sess[ix], -1
+            for i in xrange(len(t[sy][cs])):
+                if t[sy][cs][i] > 0.:
+                    ns = i
+                    break
+            cs = ns
+    # now we are ready to update the final probabilities
+    newf = [0.] * len(f)
+    for st in xrange(len(probs)):
+        if probs[st][1] > 0:
+            # print st, probs[st][0], probs[st][1]
+            newf[st] = probs[st][0] / float(probs[st][1])
+    # storing the updated model
+    pk.dump((i, newf, s, t), open(rstpath, "wb"))
+    return i, newf, s, t
 
 
 # given a sample in RTI+ format (inpath), it calls RTI+ and stores the output file (in RTI+ format) in oupath.
@@ -79,6 +117,12 @@ def mdtrain(inpath, oupath):
 if __name__ == "__main__":
     mut = "/home/nino/Scrivania/canc.rti"
     tut = "/home/nino/Scrivania/canc.rtimod"
+    rut = "/home/nino/Scrivania/canc.bin"
     mdut = mdload(tut)
-    print mdut[3][0][4], mdut[2][4][0]
+    # print mdut[3][0][4], mdut[2][4][0]
     # mdtrain(mut, tut)
+    # for sut in sessionize(mut):
+    #     print sut
+    mdut2 = restimate(mdut, mut, rut)
+    print mdut[1]
+    print mdut2[1]

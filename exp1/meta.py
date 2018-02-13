@@ -31,3 +31,6 @@ TRAINSIZE = 2000
 
 # amount of session within the testing sample
 TESTSIZE = 500
+
+# minimal probability correction to avoid 0s in the perplexity computation (used in analyze.py)
+MINPROB = 1e-20

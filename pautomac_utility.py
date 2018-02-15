@@ -198,6 +198,34 @@ def mdload(path):
     return ni, nf, ns, net
 
 
+# given a model loaded with mdload(), it stores it in path in Pautomac format
+def mdstore((i, f, s, t), path):
+    with open(path, "w") as oh:
+        # first, the initial probabilities
+        oh.write("I: (state)")
+        for ix in xrange(len(i)):
+            if i[ix] > 0.:
+                oh.write("\n\t(" + str(ix) + ") " + str(i[ix]))
+        # second, the final probabilities
+        oh.write("\nF: (state)")
+        for ix in xrange(len(f)):
+            if f[ix] > 0.:
+                oh.write("\n\t(" + str(ix) + ") " + str(f[ix]))
+        # third, the emission probabilities
+        oh.write("\nS: (state,symbol)")
+        for ix in xrange(len(s)):
+            for jx in xrange(len(t)):
+                # if s[ix][jx] > 0.:
+                oh.write("\n\t(" + str(ix) + "," + str(jx) + ") " + str(s[ix][jx]))
+        # fourth, the transitions
+        oh.write("\nT: (state,symbol,state)")
+        for ix in xrange(len(t)):
+            for jx in xrange(len(t[ix])):
+                for zx in xrange(len(t[ix][jx])):
+                    if t[ix][jx][zx] > 0.:
+                        oh.write("\n\t(" + str(jx) + "," + str(ix) + "," + str(zx) + ") " + str(t[ix][jx][zx]))
+
+
 # given a model loaded with mdload(), it converts it to dot format and store it at path.
 def mdtodot((i, f, s, t), path):
     with open(path, "w") as eh:
@@ -313,11 +341,12 @@ def evaluate((i, f, s, t), inpath, oupath):
 if __name__ == "__main__":
     put = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac.train"
     rut = "/home/nino/Scrivania/canc.rti"
-    mut = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac_model.txt"
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/model.pa"
     dut = "/home/nino/Scrivania/canc.dot"
-    sut = "/home/nino/Scrivania/canc.sample"
+    sut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/train.ptm"
     eut = "/home/nino/Scrivania/canc.eval"
     wut = "/home/nino/Scrivania/canc.sw"
+    nut = "/home/nino/Scrivania/canc.mdrti"
     # iut = 0
     # for v in streamize(put):
     #     iut += 1
@@ -330,8 +359,9 @@ if __name__ == "__main__":
     #     print w
     # torti(put, rut, .3)
     x = mdload(mut)
-    # print x
+    print len(x[3])
     # sample(x, 100, sut)
     # mdtodot(x, dut)
-    evaluate(x, sut, eut)
+    # evaluate(x, sut, eut)
     # toslided(put, 4, wut)
+    # mdstore(x, nut)

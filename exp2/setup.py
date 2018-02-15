@@ -76,7 +76,7 @@ def setup():
         etr, ert = edir + "train.ptm", edir + "train.rti"
         if not exists(edir):
             mkdir(edir)
-        wsize = 2 * int(pu.meta(gtr)[pu.AVGSSIZE])
+        wsize = int(pu.meta(gtr)[pu.AVGSSIZE])
         pu.toslided(gtr, wsize, etr)
         pu.torti(etr, ert)
         # STEP 3) now we can start
@@ -105,3 +105,16 @@ def setup():
 if __name__ == "__main__":
     clean()
     setup()
+
+    # for pp in mt.PAUTPROBS:
+    #     print "setting up the sliding window for problem", pp
+    #     ppdir = mt.RESDIR + str(pp) + "/"
+    #     # STEP 2) now we generate train for the sliding window model
+    #     edir = ppdir + "sw/"
+    #     gtr = mt.RESDIR + str(pp) + "/gold/train.ptm"
+    #     etr, ert = edir + "train.ptm", edir + "train.rti"
+    #     if not exists(edir):
+    #         mkdir(edir)
+    #     wsize = int(pu.meta(gtr)[pu.AVGSSIZE])
+    #     pu.toslided(gtr, wsize, etr)
+    #     pu.torti(etr, ert)

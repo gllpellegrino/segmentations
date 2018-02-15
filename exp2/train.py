@@ -8,7 +8,9 @@ Unitilty to train all the required models.
 
 import meta as mt
 import rti_utility as ru
+import pautomac_utility as pu
 import os
+from os.path import exists
 
 
 # only cleans the files produced by learn()
@@ -18,7 +20,10 @@ def clean():
         ppdir = mt.RESDIR + str(pp) + "/"
         # first we remove the sliding window model
         print "cleaning learning products for the sliding window test case"
-        pt = ppdir + "sw/model.rtimd"
+        # pt = ppdir + "sw/model.rtimd"
+        # if os.path.exists(pt):
+        #     os.remove(pt)
+        pt = ppdir + "sw/model.pa"
         if os.path.exists(pt):
             os.remove(pt)
         # now we scan the remaining directories, still to remove training products
@@ -29,7 +34,8 @@ def clean():
                 tkdir = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/"
                 # cleaning starts
                 for item in os.listdir(tkdir):
-                    if item.endswith(".rtimd") or item.endswith("model.bin"):
+                    # if item.endswith(".rtimd") or item.endswith("model.bin"):
+                    if item.endswith("model.pa"):
                         os.remove(os.path.join(tkdir, item))
 
 
@@ -41,6 +47,7 @@ def train():
     # 4)    for each take
     # 5)        Learn the RTI+ model and store it
     # -----------------------------------------------------------------------------------------------
+    ru.RTI_CMD = mt.RTI_CMD
     for pp in mt.PAUTPROBS:
         print "learning automata for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
@@ -48,9 +55,18 @@ def train():
         print "learning automaton for sliding window test case"
         trpath = ppdir + "sw/train.rti"
         mdrpath = ppdir + "sw/model.rtimd"
-        mdepath = ppdir + "sw/model.bin"
-        ru.mdtrain(trpath, mdrpath)
-        ru.restimate(ru.mdload(mdrpath), trpath, mdepath)
+        mdepath = ppdir + "sw/model.pa"
+        if exists(mdrpath):
+            print "\trti model trained already"
+            if exists(mdepath):
+                print "\trti model converted to Pautomac already"
+            else:
+                md = ru.restimate(ru.mdload(mdrpath), trpath)
+                pu.mdstore(md, mdepath)
+        else:
+            ru.mdtrain(trpath, mdrpath)
+            md = ru.restimate(ru.mdload(mdrpath), trpath)
+            pu.mdstore(md, mdepath)
         # general case: partially correct segmentations
         for tc in xrange(0, 100 + mt.STEP, mt.STEP):
             print "learning automata for test case", tc
@@ -59,12 +75,29 @@ def train():
                 print "learning automaton for take", tk
                 trpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/train.rti"
                 mdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.rtimd"
-                mdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.bin"
-                ru.mdtrain(trpath, mdrpath)
-                ru.restimate(ru.mdload(mdrpath), trpath, mdepath)
+                mdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.pa"
+                if exists(mdrpath):
+                    print "\trti model trained already"
+                    if exists(mdepath):
+                        print "\trti model converted to Pautomac already"
+                    else:
+                        md = ru.restimate(ru.mdload(mdrpath), trpath)
+                        pu.mdstore(md, mdepath)
+                else:
+                    ru.mdtrain(trpath, mdrpath)
+                    md = ru.restimate(ru.mdload(mdrpath), trpath)
+                    pu.mdstore(md, mdepath)
 
 
 if __name__ == "__main__":
     clean()
     print "------------------------------------------------------------------------------------------------------------"
     train()
+
+    # for i in mt.PAUTPROBS:
+    #     pth1 = mt.RESDIR + str(i) + "/sw/model.rtimd"
+    #     pth2 =mt.RESDIR + str(i) + "/sw/model.bin"
+    #     if exists(pth1):
+    #         os.remove(pth1)
+    #     if exists(pth2):
+    #         os.remove(pth2)

@@ -8,7 +8,7 @@ Utility to deal with RTI+ (training models, interpreting the output).
 
 import re
 import os
-import pickle as pk
+
 
 # regular expressions
 RTI_STATE_RE = "^(-?\d+) prob: symbol=(( \d+)+)"
@@ -73,8 +73,7 @@ def sessionize(path):
 # given a model loaded from RTI+ output, hence by calling mdload() of this module, and given a RTI+ training
 # sample referenced by inpath, this module estimates the final probability since the output of RTI+ does not provide
 # such an information.
-# It stores a binary with the updated model in rstpath
-def restimate((i, f, s, t), inpath, rstpath):
+def restimate((i, f, s, t), inpath):
     probs = [[0, 0] for _ in xrange(len(i))]
     # setting the initial state
     ss = -1
@@ -86,15 +85,17 @@ def restimate((i, f, s, t), inpath, rstpath):
     for sess in sessionize(inpath):
         cs = ss
         for ix in xrange(len(sess)):
+            if cs < 0:
+                break
             # updating amount of times we reached state cs, and the amount of times we end in cs
             probs[cs][1] += 1
             if ix == len(sess) - 1:
                 probs[cs][0] += 1
             # now we move to the next state
             sy, ns = sess[ix], -1
-            for i in xrange(len(t[sy][cs])):
-                if t[sy][cs][i] > 0.:
-                    ns = i
+            for ix in xrange(len(t[sy][cs])):
+                if t[sy][cs][ix] > 0.:
+                    ns = ix
                     break
             cs = ns
     # now we are ready to update the final probabilities
@@ -103,8 +104,6 @@ def restimate((i, f, s, t), inpath, rstpath):
         if probs[st][1] > 0:
             # print st, probs[st][0], probs[st][1]
             newf[st] = probs[st][0] / float(probs[st][1])
-    # storing the updated model
-    pk.dump((i, newf, s, t), open(rstpath, "wb"))
     return i, newf, s, t
 
 
@@ -115,14 +114,26 @@ def mdtrain(inpath, oupath):
 
 
 if __name__ == "__main__":
-    mut = "/home/nino/Scrivania/canc.rti"
-    tut = "/home/nino/Scrivania/canc.rtimod"
-    rut = "/home/nino/Scrivania/canc.bin"
-    mdut = mdload(tut)
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/train.rti"
+    tut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/model.rtimd"
+    rut = "/home/nino/Scrivania/canc.pa"
+    # mdut = mdload(tut)
+    # print len(mdut[3])
     # print mdut[3][0][4], mdut[2][4][0]
     # mdtrain(mut, tut)
     # for sut in sessionize(mut):
     #     print sut
-    mdut2 = restimate(mdut, mut, rut)
-    print mdut[1]
-    print mdut2[1]
+
+    import pautomac_utility as pu
+    canc = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/model.rtimd"
+    md = mdload(canc)
+    md = restimate(md, mut)
+    pu.mdstore(md, rut)
+    md = pu.mdload(rut)
+    print len(md[3])
+
+    # mdut2 = restimate(mdut, mut)
+    # print len(mdut2[3])
+    # print len(mdut[3])
+    # print mdut2[1]
+

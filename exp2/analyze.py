@@ -11,6 +11,7 @@ Uitlity to collect, group, and analyze the results.
 from math import log
 import meta as mt
 import matplotlib.pyplot as plt
+import pickle as pk
 
 
 # minimal probability (session probability must not be 0 otherwise perplexity returns infinite.
@@ -77,6 +78,7 @@ def aggregate():
     #           8) show averaged perplexity compared with sliding window
     # 9) store the results
     # ----------------------------------------------------------------------------------------------------------------
+    respath = mt.RESDIR + "results.bin"
     res = {}
     for pp in mt.PAUTPROBS:
         res[pp] = {}
@@ -108,6 +110,7 @@ def aggregate():
             sxs.append(sx)
         # # step 8)
         # _plot(swx, sxs)
+    pk.dump(res, open(respath, "wb"))
 
 
 if __name__ == "__main__":

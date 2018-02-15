@@ -341,9 +341,9 @@ def evaluate((i, f, s, t), inpath, oupath):
 if __name__ == "__main__":
     put = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac.train"
     rut = "/home/nino/Scrivania/canc.rti"
-    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/model.pa"
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/seg_100/take_9/model.pa"
     dut = "/home/nino/Scrivania/canc.dot"
-    sut = "/home/nino/PycharmProjects/segmentation/exp2/results/14/sw/train.ptm"
+    sut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/gold/test.ptm"
     eut = "/home/nino/Scrivania/canc.eval"
     wut = "/home/nino/Scrivania/canc.sw"
     nut = "/home/nino/Scrivania/canc.mdrti"
@@ -359,9 +359,9 @@ if __name__ == "__main__":
     #     print w
     # torti(put, rut, .3)
     x = mdload(mut)
-    print len(x[3])
+    print x
     # sample(x, 100, sut)
     # mdtodot(x, dut)
-    # evaluate(x, sut, eut)
+    evaluate(x, sut, eut)
     # toslided(put, 4, wut)
     # mdstore(x, nut)

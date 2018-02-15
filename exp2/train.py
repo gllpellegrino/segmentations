@@ -61,11 +61,11 @@ def train():
             if exists(mdepath):
                 print "\trti model converted to Pautomac already"
             else:
-                md = ru.restimate(ru.mdload(mdrpath), trpath)
+                md = ru.estimate(ru.mdload(mdrpath), trpath)
                 pu.mdstore(md, mdepath)
         else:
             ru.mdtrain(trpath, mdrpath)
-            md = ru.restimate(ru.mdload(mdrpath), trpath)
+            md = ru.estimate(ru.mdload(mdrpath), trpath)
             pu.mdstore(md, mdepath)
         # general case: partially correct segmentations
         for tc in xrange(0, 100 + mt.STEP, mt.STEP):
@@ -81,11 +81,11 @@ def train():
                     if exists(mdepath):
                         print "\trti model converted to Pautomac already"
                     else:
-                        md = ru.restimate(ru.mdload(mdrpath), trpath)
+                        md = ru.estimate(ru.mdload(mdrpath), trpath)
                         pu.mdstore(md, mdepath)
                 else:
                     ru.mdtrain(trpath, mdrpath)
-                    md = ru.restimate(ru.mdload(mdrpath), trpath)
+                    md = ru.estimate(ru.mdload(mdrpath), trpath)
                     pu.mdstore(md, mdepath)
 
 

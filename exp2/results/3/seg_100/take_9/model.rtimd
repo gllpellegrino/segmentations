@@ -1,7 +1,7 @@
 SOLUTION:
 TIME-THRESHOLDS: 0 0 0
 MAX-TIME: 0
-0 prob: symbol= 2000 0 0 0  time= 2000 0 0 0 
+0 prob: symbol= 2000 0 0 0  time= 2000 0 0 0
 0 3 [0, 0]->1
 0 0 [0, 0]->-1
 0 2 [0, 0]->-1

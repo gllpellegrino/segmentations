@@ -21,7 +21,7 @@ RTI_CMD = "/home/nino/bin/RTI/build/rti 1 0.05 {TRAIN} > {MODEL}"
 # this method loads a model, inferred by RTI+, in memory
 # path is an RTI+ output file. IT DOES NOT HAVE THE PROBABILITIES, since they are not reliable in the RTI+output.
 # to estimate them you need to call estimate().
-def mdload(path):
+def mdload_wo_sinks(path):
     # first we parse the file
     trp = re.compile(RTI_TRANS_RE)
     stp = re.compile(RTI_STATE_RE)
@@ -54,6 +54,41 @@ def mdload(path):
     return i, f, s, t
 
 
+# this method loads a model, inferred by RTI+, in memory
+# path is an RTI+ output file. IT DOES NOT HAVE THE PROBABILITIES, since they are not reliable in the RTI+output.
+# to estimate them you need to call estimate().
+def mdload(path):
+    # first we parse the file
+    trp = re.compile(RTI_TRANS_RE)
+    stp = re.compile(RTI_STATE_RE)
+    q, sigma, delta = set(), set(), set()
+    with open(path, "r") as rh:
+        for line in rh:
+            mc = stp.match(line)
+            # state check
+            if mc is not None:
+                st = int(mc.group(1))
+                q.add(st)
+                for ix in xrange(len(mc.group(2).strip().split(" "))):
+                    sigma.add(ix)
+            mc = trp.match(line)
+            if mc is not None:
+                ss, sy, ds = int(mc.group(1)), int(mc.group(2)), int(mc.group(5))
+                q.add(ds)
+                q.add(ss)
+                sigma.add(sy)
+                delta.add((ss, sy, ds))
+    # adding artificial self-loops in the sink state
+    for sx in sigma:
+        delta.add((-1, sx, -1))
+    # second, we allocate the model
+    i = [1. if qx == 0 else 0. for qx in q]
+    f = [0.] * len(q)
+    s = [[0. for _ in sigma] for _ in q]
+    t = [[[1. if (q0, sy, q1) in delta else 0. for q1 in q] for q0 in q] for sy in sigma]
+    return i, f, s, t
+
+
 # given a RTI+ training file, it generates all the sessions (strings).
 def sessionize(path):
     with open(path, "r") as th:
@@ -69,18 +104,19 @@ def estimate((i, f, s, t), inpath):
     # first, we collect the counts
     rc, fi = [0 for _ in xrange(len(f))], [0 for _ in xrange(len(f))]
     em = [[0 for _ in xrange(len(s[q]))] for q in xrange(len(s))]
+    # determining the initial state. It is always the same since the model is deterministic
+    ss = -1
+    for ix in xrange(len(i)):
+        if i[ix] > 0.:
+            ss = ix
+            break
     for sess in sessionize(inpath):
-        cs = 0
+        cs = ss
         for ix in xrange(len(sess)):
-            if cs < 0:
-                break
             # sy is the current symbol
             sy = sess[ix]
             # we are visiting cs, so we update the reachability counts
             rc[cs] += 1
-            # if we are finishing in cs, we update the count of ending in cs
-            if ix == len(sess) - 1:
-                fi[cs] += 1
             # sess[ix] is a symbol, that we are seeing in cs. We update the emission counts.
             em[cs][sy] += 1
             # now we move to the next state
@@ -90,10 +126,45 @@ def estimate((i, f, s, t), inpath):
                     fs = jx
                     break
             cs = fs
+        fi[cs] += 1
     # second, we estimate the probabilities by MLE
-    nf = [fi[q] / float(rc[q]) if rc[q] > 0 else 0 for q in xrange(len(f))]
+    nf = [fi[q] / float(rc[q]) if rc[q] > 0 else 0. for q in xrange(len(f))]
     ns = [[em[q][sy] / float(sum(em[q])) if sum(em[q]) > 0 else 0. for sy in xrange(len(s[q]))] for q in xrange(len(s))]
     return i, nf, ns, t
+
+
+# given an RTI+ model loaded with mdload(), a session generator (as sessionize in this module,
+# or in pautomac_utility.py), it computes the probability of each session in the sample according to the model,
+# and stores it in oupath.
+# PLEASE NOTE: those probabilities does not form a distribution, and no smoothing is applied.
+def evaluate((i, f, s, t), sessions, oupath):
+    # determining the initial state. It is always the same since the models are deterministic
+    ss = -1
+    for ix in xrange(len(i)):
+        if i[ix] > 0.:
+            ss = ix
+            break
+    # getting the probability of all sessions given the model
+    prs = []
+    for sess in sessions:
+        cs, pr, = ss, i[ss]
+        # cs, pr = 0, 1.
+        for sy in sess:
+            # looking for the next state
+            ns = -1
+            for ix in xrange(len(t[sy][cs])):
+                if t[sy][cs][ix] > 0.:
+                    ns = ix
+                    break
+            # updating the probability
+            pr *= (1. - f[cs]) * s[cs][sy]
+            cs = ns
+        prs.append(pr * f[cs])
+    # writing the solution file
+    with open(oupath, "w") as oh:
+        oh.write(str(len(prs)))
+        for pr in prs:
+            oh.write("\n" + str(pr))
 
 
 # given a sample in RTI+ format (inpath), it calls RTI+ and stores the output file (in RTI+ format) in oupath.
@@ -103,13 +174,15 @@ def mdtrain(inpath, oupath):
 
 
 if __name__ == "__main__":
-    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/seg_100/take_9/train.rti"
-    tut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/seg_100/take_9/model.rtimd"
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/train.rti"
+    tut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/model.rtimd"
     rut = "/home/nino/Scrivania/canc.pa"
     dut = "/home/nino/Scrivania/canc.dot"
     gut = "/home/nino/PycharmProjects/segmentation/pautomac/3/3.pautomac_model.txt"
+    sut = "/home/nino/Scrivania/canc.sol"
+    eut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/gold/test.ptm"
     mdut = mdload(tut)
-    print mdut
+    print mdut[1]
     # print mdut[3][0][4], mdut[2][4][0]
     # mdtrain(mut, tut)
     # for sut in sessionize(mut):
@@ -125,9 +198,12 @@ if __name__ == "__main__":
     # print len(md[3])
 
     mdut2 = estimate(mdut, mut)
-    print mdut2
-    # print len(mdut[3])
-    # print mdut2[1]
+    print mdut2[1]
+    # print mdut2[2][0]
 
     # import pautomac_utility as pu
     # pu.mdtodot(mdut, dut)
+
+    # import pautomac_utility as pu
+    # evaluate(mdut2, pu.sessionize(eut), sut)
+    # pu.evaluate(mdut2, eut, sut)

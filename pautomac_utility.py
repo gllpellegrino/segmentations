@@ -215,7 +215,7 @@ def mdstore((i, f, s, t), path):
         oh.write("\nS: (state,symbol)")
         for ix in xrange(len(s)):
             for jx in xrange(len(t)):
-                # if s[ix][jx] > 0.:
+                # if s[ix][jx] > dec(0.):
                 oh.write("\n\t(" + str(ix) + "," + str(jx) + ") " + str(s[ix][jx]))
         # fourth, the transitions
         oh.write("\nT: (state,symbol,state)")
@@ -262,6 +262,7 @@ def sample((i, f, s, t), howmany, path):
             cs, sess = list(ind.rvs(size=1))[0], []
             while True:
                 # PLEASE NOTE: we do notgenerate empty sequences at the moment
+                # since RTI+ crashes with empty sequences
                 if sess and (f[cs] >= rn.random() or len(sess) > SESSLIMIT):
                     break
                 # sampling a symbol
@@ -341,12 +342,13 @@ def evaluate((i, f, s, t), inpath, oupath):
 if __name__ == "__main__":
     put = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac.train"
     rut = "/home/nino/Scrivania/canc.rti"
-    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/seg_100/take_9/model.pa"
-    dut = "/home/nino/Scrivania/canc.dot"
-    sut = "/home/nino/PycharmProjects/segmentation/exp2/results/3/gold/test.ptm"
-    eut = "/home/nino/Scrivania/canc.eval"
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/model.pa"
+    dut = "/home/nino/Scrivania/canc2.dot"
+    sut = "/home/nino/PycharmProjects/segmentation/exp2/results/1/gold/test.ptm"
+    eut = "/home/nino/Scrivania/canc2.eval"
     wut = "/home/nino/Scrivania/canc.sw"
     nut = "/home/nino/Scrivania/canc.mdrti"
+    gut = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac_model.txt"
     # iut = 0
     # for v in streamize(put):
     #     iut += 1
@@ -361,7 +363,7 @@ if __name__ == "__main__":
     x = mdload(mut)
     print x
     # sample(x, 100, sut)
-    # mdtodot(x, dut)
-    evaluate(x, sut, eut)
+    mdtodot(x, dut)
+    # evaluate(x, sut, eut)
     # toslided(put, 4, wut)
     # mdstore(x, nut)

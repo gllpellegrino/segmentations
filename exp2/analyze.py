@@ -2,17 +2,14 @@
 
 __author__ = 'Gaetano "Gibbster" Pellegrino'
 
-
 """
 Uitlity to collect, group, and analyze the results.
 """
-
 
 from math import log
 import meta as mt
 import matplotlib.pyplot as plt
 import pickle as pk
-
 
 # minimal probability (session probability must not be 0 otherwise perplexity returns infinite.
 # so we set a minmal very low probability instead of 0
@@ -34,7 +31,7 @@ def distload(path):
             ds.append(vl)
             dsum += vl
     # normalizing before returning
-    return [vl / float(dsum) for vl in ds]
+    return [vl / dsum for vl in ds]
 
 
 # given two distributions (loaded with distload()) for the same sample of strings, it returns the perplexity
@@ -44,12 +41,18 @@ def perplexity(dtarget, dcandidate):
     entropy = 0.
     for i in xrange(len(dtarget)):
         entropy += dtarget[i] * log(dcandidate[i], 2)
+        # entropy += dtarget[i] * dcandidate[i].log10() / log2
     return pow(2, - entropy)
 
 
 # given the perplexity value of the sliding window, and the perplexity values for the segmentations,
 # it simply plots them
-def _plot(swd, sxs):
+def plot(res, pid):
+    # extracting the values
+    swd = res[pid]["sw"]
+    sxs = [res[pid]["seg_" + str(tc)] for tc in xrange(0, 100 + mt.STEP, mt.STEP)]
+    print swd, sxs
+    # plotting
     xvs = [i for i in xrange(len(sxs))]
     xls = [str(i * mt.STEP) + "%" for i in xvs]
     plt.xticks(xvs, xls, rotation=45)
@@ -80,19 +83,20 @@ def aggregate():
     # ----------------------------------------------------------------------------------------------------------------
     respath = mt.RESDIR + "results.bin"
     res = {}
+    # step 1) to 8)
     for pp in mt.PAUTPROBS:
         res[pp] = {}
         print "computing solutions for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
-        # step 1)
+        # step 2)
         gp = ppdir + "gold/solution.txt"
         gd = distload(gp)
-        # step 2)
+        # step 3)
         swp = ppdir + "sw/solution.txt"
         swd = distload(swp)
         swx = perplexity(gd, swd)
         res[pp]["sw"] = swx
-        # step 3) to 7)
+        # step 4) to 7)
         sxs = []
         for tc in xrange(0, 100 + mt.STEP, mt.STEP):
             print "segmentation with", tc, "% correct bounds:"
@@ -103,12 +107,13 @@ def aggregate():
                 dd = distload(dp)
                 dx = perplexity(gd, dd)
                 dxs.append(dx)
+                print "\t\tperplexity:", dx
             sx = sum(dxs) / float(len(dxs))
             res[pp]["seg_" + str(tc)] = sx
             print "\tperplexity:", sx
             print "\tsliding window:", swx
             sxs.append(sx)
-        # # step 8)
+        # # step 9)
         # _plot(swx, sxs)
     pk.dump(res, open(respath, "wb"))
 
@@ -120,4 +125,9 @@ if __name__ == "__main__":
     # g = distload(go)
     # print len(c), len(g)
     # print perplexity(g, c)
-    aggregate()
+    # aggregate()
+    # [6, 7, 9, 11, 13, 16, 18, 24, 26, 27, 32, 35, 40, 42, 47, 48]
+    rs = pk.load(open(mt.RESDIR + "results.bin"))
+    for pid in mt.PAUTPROBS:
+         plot(rs, pid)
+    # plot(rs, 24)

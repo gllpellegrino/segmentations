@@ -29,7 +29,7 @@ TRAINSIZE = 2000
 TESTSIZE = 500
 
 # minimal probability correction to avoid 0s in the perplexity computation (used in analyze.py)
-MINPROB = 1e-20
+MINPROB = 1e-200
 
 # RTI+ bash command (used in train.py)
 RTI_CMD = "/home/nino/bin/RTI/build/rti 1 0.05 {TRAIN} > {MODEL}"

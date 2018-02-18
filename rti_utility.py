@@ -78,9 +78,9 @@ def mdload(path):
                 q.add(ss)
                 sigma.add(sy)
                 delta.add((ss, sy, ds))
-    # adding artificial self-loops in the sink state
-    for sx in sigma:
-        delta.add((-1, sx, -1))
+    # # adding artificial self-loops in the sink state
+    # for sx in sigma:
+    #     delta.add((-1, sx, -1))
     # second, we allocate the model
     i = [1. if qx == 0 else 0. for qx in q]
     f = [0.] * len(q)
@@ -105,14 +105,17 @@ def estimate((i, f, s, t), inpath):
     rc, fi = [0 for _ in xrange(len(f))], [0 for _ in xrange(len(f))]
     em = [[0 for _ in xrange(len(s[q]))] for q in xrange(len(s))]
     # determining the initial state. It is always the same since the model is deterministic
-    ss = -1
+    ss = None
     for ix in xrange(len(i)):
         if i[ix] > 0.:
             ss = ix
             break
+    assert ss is not None
     for sess in sessionize(inpath):
         cs = ss
         for ix in xrange(len(sess)):
+            if cs is None:
+                break
             # sy is the current symbol
             sy = sess[ix]
             # we are visiting cs, so we update the reachability counts
@@ -120,13 +123,14 @@ def estimate((i, f, s, t), inpath):
             # sess[ix] is a symbol, that we are seeing in cs. We update the emission counts.
             em[cs][sy] += 1
             # now we move to the next state
-            fs = -1
+            fs = None
             for jx in xrange(len(t[sy][cs])):
                 if t[sy][cs][jx] > 0.:
                     fs = jx
                     break
             cs = fs
-        fi[cs] += 1
+        if cs is not None:
+            fi[cs], rc[cs] = fi[cs] + 1, rc[cs] + 1
     # second, we estimate the probabilities by MLE
     nf = [fi[q] / float(rc[q]) if rc[q] > 0 else 0. for q in xrange(len(f))]
     ns = [[em[q][sy] / float(sum(em[q])) if sum(em[q]) > 0 else 0. for sy in xrange(len(s[q]))] for q in xrange(len(s))]
@@ -139,27 +143,30 @@ def estimate((i, f, s, t), inpath):
 # PLEASE NOTE: those probabilities does not form a distribution, and no smoothing is applied.
 def evaluate((i, f, s, t), sessions, oupath):
     # determining the initial state. It is always the same since the models are deterministic
-    ss = -1
+    ss = None
     for ix in xrange(len(i)):
         if i[ix] > 0.:
             ss = ix
             break
+    assert ss is not None
     # getting the probability of all sessions given the model
     prs = []
     for sess in sessions:
         cs, pr, = ss, i[ss]
         # cs, pr = 0, 1.
         for sy in sess:
+            if cs is None:
+                break
+            # updating the probability
+            pr *= (1. - f[cs]) * s[cs][sy]
             # looking for the next state
-            ns = -1
+            ns = None
             for ix in xrange(len(t[sy][cs])):
                 if t[sy][cs][ix] > 0.:
                     ns = ix
                     break
-            # updating the probability
-            pr *= (1. - f[cs]) * s[cs][sy]
             cs = ns
-        prs.append(pr * f[cs])
+        prs.append(pr * f[cs]) if cs is not None else prs.append(0.)
     # writing the solution file
     with open(oupath, "w") as oh:
         oh.write(str(len(prs)))
@@ -174,15 +181,17 @@ def mdtrain(inpath, oupath):
 
 
 if __name__ == "__main__":
-    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/train.rti"
-    tut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/model.rtimd"
+    mut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/train.rti"
+    tut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.rtimd"
     rut = "/home/nino/Scrivania/canc.pa"
     dut = "/home/nino/Scrivania/canc.dot"
     gut = "/home/nino/PycharmProjects/segmentation/pautomac/3/3.pautomac_model.txt"
     sut = "/home/nino/Scrivania/canc.sol"
-    eut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/gold/test.ptm"
+    eut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/gold/test.ptm"
+    put = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.pa"
     mdut = mdload(tut)
     print mdut[1]
+
     # print mdut[3][0][4], mdut[2][4][0]
     # mdtrain(mut, tut)
     # for sut in sessionize(mut):
@@ -198,12 +207,14 @@ if __name__ == "__main__":
     # print len(md[3])
 
     mdut2 = estimate(mdut, mut)
-    print mdut2[1]
+    #rint mdut2[1]
     # print mdut2[2][0]
 
     # import pautomac_utility as pu
     # pu.mdtodot(mdut, dut)
+    # mdut = pu.mdload(put)
+    # print mdut[1]
 
-    # import pautomac_utility as pu
-    # evaluate(mdut2, pu.sessionize(eut), sut)
+    import pautomac_utility as pu
+    evaluate(mdut2, pu.sessionize(eut), sut)
     # pu.evaluate(mdut2, eut, sut)

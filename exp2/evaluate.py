@@ -65,7 +65,7 @@ def evaluate():
         solpath = ppdir + "sw/solution.txt"
         mdpath = ppdir + "sw/model.pa"
         md = pu.mdload(mdpath)
-        ru.evaluate(md, pu.sessionize(evpath), solpath)
+        # ru.evaluate(md, pu.sessionize(evpath), solpath)
         pu.evaluate(md, evpath, solpath)
         # general case: partially correct segmentations
         for tc in xrange(0, 100 + mt.STEP, mt.STEP):
@@ -76,8 +76,8 @@ def evaluate():
                 solpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/solution.txt"
                 mdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.pa"
                 md = pu.mdload(mdpath)
-                ru.evaluate(md, pu.sessionize(evpath), solpath)
-                # pu.evaluate(md, evpath, solpath)
+                # ru.evaluate(md, pu.sessionize(evpath), solpath)
+                pu.evaluate(md, evpath, solpath)
 
 
 if __name__ == "__main__":

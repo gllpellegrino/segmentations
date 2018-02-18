@@ -60,7 +60,7 @@ def plot(res, pid):
     plt.plot(xvs, [swd for _ in xrange(len(sxs))], linestyle="-.", color="k", label="SW")
     # plt.xlabel('Correct bounds %')
     plt.ylabel('Perplexity')
-    # plt.title('About as simple as it gets, folks')
+    plt.title('Problem ' + str(pid))
     plt.grid(True)
     plt.legend()
     plt.show()
@@ -125,9 +125,9 @@ if __name__ == "__main__":
     # g = distload(go)
     # print len(c), len(g)
     # print perplexity(g, c)
-    # aggregate()
+    #aggregate()
     # [6, 7, 9, 11, 13, 16, 18, 24, 26, 27, 32, 35, 40, 42, 47, 48]
     rs = pk.load(open(mt.RESDIR + "results.bin"))
-    for pid in mt.PAUTPROBS:
-         plot(rs, pid)
-    # plot(rs, 24)
+    # for pid in mt.PAUTPROBS:
+    #   plot(rs, pid)
+    plot(rs, 26)

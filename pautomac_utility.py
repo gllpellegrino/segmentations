@@ -58,15 +58,41 @@ def windowize(path, size):
     yield window
 
 
-# given a pautomac training file, it generates all the sessions (strings).
-def sessionize(path):
-    session = []
-    for sym, end in streamize(path):
-        if not end:
-            session.append(sym)
+# # given a pautomac training file, it generates all the sessions (strings).
+# def sessionize(path):
+#     session = []
+#     for sym, end in streamize(path):
+#         if not end:
+#             session.append(sym)
+#         else:
+#             yield session + [sym]
+#             session = []
+
+
+# given the path to a gold pautomac formatted training sample,
+# and the percentage of correct bounds selected from the gold sample; it is a value in [0.0,1.0],
+# this iterator return the corresponsing sessions
+def sessionize(gpath, rb=1.):
+    # first we need to pick up the amount of correct bounds
+    bns = meta(gpath)[SESSIONS]
+    ncor = int(rb * bns)
+    # now we need to randomly select tos correct bounds and leave the rest
+    ind, correct = 0, []
+    for sym, end in streamize(gpath):
+        if end:
+            correct.append(ind)
+        ind += 1
+    rn.seed(SEED)
+    sel = set(rn.sample(correct, ncor))
+    # now we can return the sessions
+    ind, sess = 0, []
+    for sym, _ in streamize(gpath):
+        if ind in sel:
+            yield sess + [sym]
+            sess = []
         else:
-            yield session + [sym]
-            session = []
+            sess.append(sym)
+        ind += 1
 
 
 # given a pautomac training file, it extracts several meta-informations as the average string size.
@@ -110,7 +136,7 @@ def toslided(inpath, wsize, oupath):
 # given a pautomac training/testing file, exports it to the RTI+ format.
 # rb is the percentage of correct bounds included into the exported file; it is a value in [0.0,1.0],
 # if set < 1.0, the remaining bounds are set by random.
-def torti(inpath, oupath, rb=1.):
+def torti_old(inpath, oupath, rb=1.):
     metas = meta(inpath)
     asize, bsize = metas[ALPHA], metas[SESSIONS]
     # first we need to determine the bounds to include into the exported file
@@ -132,6 +158,27 @@ def torti(inpath, oupath, rb=1.):
         ind, wind = 0, []
         for sym, _ in streamize(inpath):
             if ind not in bounds:
+                wind.append(sym)
+            else:
+                # time to print
+                oh.write("\n" + str(len(wind) + 1))
+                for wsy in wind:
+                    oh.write(" " + str(wsy) + " 0")
+                oh.write(" " + str(sym) + " 0")
+                # ok, now reset
+                wind = []
+            ind += 1
+
+
+# given a pautomac training/testing file, exports it to the RTI+ format.
+def torti(inpath, oupath):
+    metas = meta(inpath)
+    asize, bsize = metas[ALPHA], metas[SESSIONS]
+    with open(oupath, "w") as oh:
+        oh.write(str(bsize) + " " + str(asize))
+        ind, wind = 0, []
+        for sym, flg in streamize(inpath):
+            if not flg:
                 wind.append(sym)
             else:
                 # time to print
@@ -340,7 +387,7 @@ def evaluate((i, f, s, t), inpath, oupath):
 
 
 if __name__ == "__main__":
-    put = "/home/nino/PycharmProjects/segmentation/pautomac/24/24.pautomac.train"
+    put = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/21/gold/train.ptm"
     rut = "/home/nino/Scrivania/canc.rti"
     mut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/model.pa"
     dut = "/home/nino/Scrivania/canc2.dot"
@@ -360,10 +407,11 @@ if __name__ == "__main__":
     # for w in sessionize(put):
     #     print w
     # torti(put, rut, .3)
-    x = mdload(mut)
-    print x
+    # x = mdload(mut)
+    # print x
     # sample(x, 100, sut)
-    mdtodot(x, dut)
+    # mdtodot(x, dut)
     # evaluate(x, sut, eut)
-    # toslided(put, 4, wut)
+    toslided(put, 5, wut)
+    torti(wut, rut)
     # mdstore(x, nut)

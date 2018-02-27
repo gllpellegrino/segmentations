@@ -97,6 +97,21 @@ def sessionize(path):
             yield map(int, line.strip().split(" "))[1::2]
 
 
+# given a RTI+ training file, it generates one value at once as in a stream.
+# for each symbol, we have a flag telling if AFTER the symbol we have a boundary.
+def streamize(path):
+    with open(path, "r") as ih:
+        # we skip the first line because it is the header
+        ih.readline()
+        for line in ih:
+            # we skip the first value because it is the length of the sequence
+            values = map(int, line.strip().split(" "))[1::2]
+            # pay attention here, we do not skip possible empty sessions
+            for vl in values[:-1]:
+                yield (vl, False)
+            yield (values[-1], True)
+
+
 # given a model loaded from RTI+ output, hence by calling mdload() of this module, and given a RTI+ training
 # sample referenced by inpath, this module estimates the probabilities since the output of RTI+ does not provide
 # such an information reliably.
@@ -110,6 +125,7 @@ def estimate((i, f, s, t), inpath):
         if i[ix] > 0.:
             ss = ix
             break
+    print i
     assert ss is not None
     for sess in sessionize(inpath):
         cs = ss
@@ -165,6 +181,8 @@ def evaluate((i, f, s, t), sessions, oupath):
                 if t[sy][cs][ix] > 0.:
                     ns = ix
                     break
+            if ns is None:
+                print cs, sy, sess
             cs = ns
         prs.append(pr * f[cs]) if cs is not None else prs.append(0.)
     # writing the solution file
@@ -182,15 +200,19 @@ def mdtrain(inpath, oupath):
 
 if __name__ == "__main__":
     mut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/train.rti"
+    mut2 = "/home/nino/Scrivania/canc.train"
+    mut3 = "/home/nino/Scrivania/canc.rti"
     tut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.rtimd"
+    tut2 = "/home/nino/Scrivania/canc.rtimd"
     rut = "/home/nino/Scrivania/canc.pa"
     dut = "/home/nino/Scrivania/canc.dot"
-    gut = "/home/nino/PycharmProjects/segmentation/pautomac/3/3.pautomac_model.txt"
+    gut = "/home/nino/PycharmProjects/segmentation/pautomac/26/26.pautomac_model.txt"
     sut = "/home/nino/Scrivania/canc.sol"
-    eut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/gold/test.ptm"
+    eut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/gold/train.ptm"
     put = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.pa"
-    mdut = mdload(tut)
-    print mdut[1]
+
+    # mdut = mdload(tut)
+    # print mdut[1]
 
     # print mdut[3][0][4], mdut[2][4][0]
     # mdtrain(mut, tut)
@@ -206,15 +228,20 @@ if __name__ == "__main__":
     # md = pu.mdload(rut)
     # print len(md[3])
 
-    mdut2 = estimate(mdut, mut)
+    # mdut2 = estimate(mdut, mut)
     #rint mdut2[1]
     # print mdut2[2][0]
 
-    # import pautomac_utility as pu
-    # pu.mdtodot(mdut, dut)
+    import pautomac_utility as pu
+    mdut2 = mdload(tut2)
+    mdut2 = estimate(mdut2, mut2)
+    # mdut = pu.mdload(gut)
+    # pu.sample(mdut, 20000, mut2)
+    # pu.torti(mut2, mut3)
+    # pu.mdtodot(mdut2, dut)
     # mdut = pu.mdload(put)
     # print mdut[1]
 
-    import pautomac_utility as pu
-    evaluate(mdut2, pu.sessionize(eut), sut)
-    # pu.evaluate(mdut2, eut, sut)
+    # import pautomac_utility as pu
+    # evaluate(mdut2, pu.sessionize(eut), sut)
+    pu.evaluate(mdut2, mut2, sut)

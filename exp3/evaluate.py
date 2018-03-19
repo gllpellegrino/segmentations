@@ -50,8 +50,10 @@ def evaluate():
     # 5)        for each take
     # 6)            Generate the solution
     # ----------------------------------------------------------
-    for pp in mt.PAUTPROBS:
-        print "cleaning evaluation products for Pautomac problem number", pp
+    # for pp in mt.PAUTPROBS:
+    # @todo ocio qui
+    for pp in xrange(1, 18, 1):
+        print "evaluating for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # special case: gold
         print "generating the solution for the gold case"
@@ -72,14 +74,19 @@ def evaluate():
             print "generating the solution for the case", tc
             # setting the base directory for test case tc
             for tk in xrange(mt.TAKES):
-                print "generating the solution for take", tk
-                solpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/solution.txt"
-                mdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.pa"
-                md = pu.mdload(mdpath)
+                print "generating the partially random solution for take", tk
+                prsolpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.sol"
+                prmdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.pa"
+                prmd = pu.mdload(prmdpath)
                 # ru.evaluate(md, pu.sessionize(evpath), solpath)
-                pu.evaluate(md, evpath, solpath)
+                pu.evaluate(prmd, evpath, prsolpath)
+                print "generaing the semi-supervised solution for take", tk
+                sssolpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.sol"
+                ssmdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
+                ssmd = pu.mdload(ssmdpath)
+                pu.evaluate(ssmd, evpath, sssolpath)
 
 
 if __name__ == "__main__":
-    clean()
+    # clean()
     evaluate()

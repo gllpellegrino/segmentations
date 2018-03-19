@@ -32,7 +32,7 @@ TESTSIZE = 5000
 MINPROB = 1e-200
 
 # maximal window length for sliding window samples (it affect performance in terms of memory requirements)
-MAXWSIZE = 5
+MAXWSIZE = 3
 
 # RTI+ bash command (used in train.py)
 RTI_CMD = "/home/nino/bin/RTI/build/rti 1 0.05 {TRAIN} > {MODEL}"

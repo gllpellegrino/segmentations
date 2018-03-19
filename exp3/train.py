@@ -48,8 +48,9 @@ def train():
     # 5)        Learn the RTI+ model and store it
     # -----------------------------------------------------------------------------------------------
     ru.RTI_CMD = mt.RTI_CMD
-    # for pp in mt.PAUTPROBS:
-    for pp in xrange(21, 49, 1):
+    #@todo ocio qua
+    for pp in mt.PAUTPROBS:
+    # for pp in xrange(1, 2, 1):
         print "learning automata for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # special case: sliding window
@@ -74,13 +75,14 @@ def train():
             # setting the base directory for test case tc
             for tk in xrange(mt.TAKES):
                 print "learning automaton for take", tk
-                trpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/train.rti"
-                mdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.rtimd"
-                mdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/model.pa"
+                trpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.rti"
+                mdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.rtimd"
+                mdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.pa"
+                # handling the partially random model
                 if exists(mdrpath):
-                    print "\trti model trained already"
+                    print "\trti model for partially random segmentation trained already"
                     if exists(mdepath):
-                        print "\trti model converted to Pautomac already"
+                        print "\trti model for partially random segmentation converted to Pautomac already"
                     else:
                         md = ru.estimate(ru.mdload(mdrpath), trpath)
                         pu.mdstore(md, mdepath)
@@ -88,6 +90,21 @@ def train():
                     ru.mdtrain(trpath, mdrpath)
                     md = ru.estimate(ru.mdload(mdrpath), trpath)
                     pu.mdstore(md, mdepath)
+                # handling the semi supervised model
+                srpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rti"
+                sdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rtimd"
+                sdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
+                if exists(sdrpath):
+                    print "\trti model for semi-supervised segmentation trained already"
+                    if exists(sdepath):
+                        print "\trti model for semi-supervised segmentation converted to Pautomac already"
+                    else:
+                        md = ru.estimate(ru.mdload(sdrpath), srpath)
+                        pu.mdstore(md, sdepath)
+                else:
+                    ru.mdtrain(srpath, sdrpath)
+                    md = ru.estimate(ru.mdload(sdrpath), srpath)
+                    pu.mdstore(md, sdepath)
 
 
 if __name__ == "__main__":

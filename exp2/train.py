@@ -90,9 +90,9 @@ def train():
 
 
 if __name__ == "__main__":
-    clean()
+    # clean()
     print "------------------------------------------------------------------------------------------------------------"
-    train()
+    # train()
 
     # for i in mt.PAUTPROBS:
     #     pth1 = mt.RESDIR + str(i) + "/sw/model.rtimd"

@@ -125,7 +125,6 @@ def estimate((i, f, s, t), inpath):
         if i[ix] > 0.:
             ss = ix
             break
-    print i
     assert ss is not None
     for sess in sessionize(inpath):
         cs = ss

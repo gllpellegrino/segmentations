@@ -15,7 +15,6 @@ A segmentation is internally represented as a dictionary.
 
 
 import random as rn
-from sortedcontainers import SortedList
 
 
 # seed for the random selection of the boundaries
@@ -24,7 +23,7 @@ SEED = 1984
 
 # load a segmentation in memory by using streamize() of pautomac_utility.py or rti_utility.py
 def load(stream):
-    sg = {"bins": SortedList([]), "nbins": set(), "alph": set(), "seq": [], "pool": set()}
+    sg = {"bins": set(), "nbins": set(), "alph": set(), "seq": []}
     ind = 0
     for sy, fl in stream:
         sg["seq"].append(sy)
@@ -96,37 +95,16 @@ def sessionize(sg):
 # it turns off a given number of boundaries and returns only them.
 # bounds to get selected are chosen randomly.
 # please note: it generates a new sequence and does not modify the input sequence.
-# please note: even if you pass nb = 0, there will always be at least one bound in the sequence: the last bound.
-# please note: if you want to turn off more bounds than those available in the sequence, all of them will get
-# turned off but the one located at the end of the sequence
 def debound(sg, nb):
-    # assert 0 <= nb < len(sg["bins"])
-    assert nb >= 0
-    nsg = {"bins": SortedList([]), "nbins": set(), "alph": set(), "seq": [], "pool": set()}
+    nsg = {"bins": set(), "nbins": set(), "alph": set(), "seq": []}
     rn.seed(SEED)
-    # we want to keep those boundaries in the resulting segentation (nsg)
-    # PLEASE NOTE: we cannot remove the boundary located at the very end of the sequence.
-    # that's why we avoid it to get sampled
-    tosample = min(nb - 1, len(sg["bins"]) - 1)
-    bns = {sg["bins"][-1]}
-    if tosample > 0:
-        bns = bns.union(set(rn.sample(sg["bins"][:-1], tosample)))
+    bns = set(rn.sample(sg["bins"], nb))
     ind = 0
     for sy in sg["seq"]:
         nsg["alph"].add(sy)
         nsg["seq"].append(sy)
-        if ind in sg["bins"]:
-            if ind in bns:
-                nsg["bins"].add(ind)
-            else:
-                nsg["nbins"].add(ind)
-                bind = sg["bins"].index(ind)
-                lastind = sg["bins"][bind - 1] + 1 if bind - 1 >= 0 else 0
-                nextind = sg["bins"][bind + 1] if bind + 1 < len(sg["bins"]) else sg["bins"][-1]
-                # for pind in xrange(lastind + 1, max(nextind, ind), 1):
-                for pind in xrange(lastind, nextind, 1):
-                    # print pind, sg["seq"][pind]
-                    nsg["pool"].add(pind)
+        if ind in bns:
+            nsg["bins"].add(ind)
         else:
             nsg["nbins"].add(ind)
         ind += 1
@@ -136,14 +114,10 @@ def debound(sg, nb):
 # given a segmentation loaded with load(), it generates a NEW sequence
 # similar to the first, but nb non boundary locations turned into boundaries.
 # those non boundary locations are chosen by chance
-# please note: no more than the amount of bounds in the pool can be turned on, therefore if
-# you provide an ng bigger than the pool ... then all the candidates in the pool will get turned on.
 def bound(sg, nb):
-    assert nb >= 0
-    nsg = {"bins": SortedList([]), "nbins": set(), "alph": set(), "seq": [], "pool": set()}
+    nsg = {"bins": set(), "nbins": set(), "alph": set(), "seq": []}
     rn.seed(SEED)
-    tosample = min(nb, len(sg["pool"]))
-    bns = set(rn.sample(sg["pool"], tosample))
+    bns = set(rn.sample(sg["nbins"], nb))
     ind = 0
     for sy in sg["seq"]:
         nsg["alph"].add(sy)
@@ -199,29 +173,13 @@ if __name__ == "__main__":
     # for t in sessionize(s):
     #     print t
 
-    # gd = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/gold/train.ptm"
-    # ss = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/seg_40/take_0/sss.rti"
-    # rn = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/seg_40/take_0/train.rti"
-    # gds = load(pu.streamize(gd))
-    # cns = load(ru.streamize(ss))
-    # rns = load(ru.streamize(rn))
-    # print "SSS"
-    # evaluate(gds, cns)
-    # print "PRN"
-    # evaluate(gds, rns)
-
-    # sp = "/home/nino/Scrivania/ss.train"
-    # sp2 = "/home/nino/Scrivania/canc_random.train"
-    # sgg = load(ru.streamize(sp))
-    # n = int(.4 * (19999 - 1))
-    # sg2 = debound(sgg, n)
-    # sg3 = bound(sg2, 19999 - n)
-    # torti(sg3, sp2)
-
-    sp = "/home/nino/Scrivania/toy.train"
-    sgg = load(ru.streamize(sp))
-    print sgg
-    sgg2 = debound(sgg, 3)
-    torti(sgg2, sp + ".canc")
-    print sgg2
-    print bound(sgg2, 0)
+    gd = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/gold/train.ptm"
+    ss = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/seg_70/take_0/sss.rti"
+    rn = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/1/seg_70/take_0/train.rti"
+    gds = load(pu.streamize(gd))
+    cns = load(ru.streamize(ss))
+    rns = load(ru.streamize(rn))
+    print "SSS"
+    evaluate(gds, cns)
+    print "PRN"
+    evaluate(gds, rns)

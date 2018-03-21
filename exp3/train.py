@@ -49,8 +49,8 @@ def train():
     # -----------------------------------------------------------------------------------------------
     ru.RTI_CMD = mt.RTI_CMD
     #@todo ocio qua
-    for pp in mt.PAUTPROBS:
-    # for pp in xrange(1, 2, 1):
+    # for pp in mt.PAUTPROBS:
+    for pp in xrange(24, 25, 1):
         print "learning automata for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # special case: sliding window

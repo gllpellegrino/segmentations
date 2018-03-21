@@ -52,7 +52,7 @@ def evaluate():
     # ----------------------------------------------------------
     # for pp in mt.PAUTPROBS:
     # @todo ocio qui
-    for pp in xrange(1, 18, 1):
+    for pp in xrange(24, 25, 1):
         print "evaluating for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # special case: gold

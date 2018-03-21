@@ -37,6 +37,18 @@ def distload(path):
     return [vl / dsum for vl in ds]
 
 
+# given a file produced by evaluate() in pautomac_utility.py, so basically a solution file (solution.txt),
+# it loads the values in memory.
+def probload(path):
+    ps = []
+    with open(path, "r") as sh:
+        sh.readline()
+        for line in sh:
+            vl = float(line.strip())
+            ps.append(vl)
+    return ps
+
+
 # given two distributions (loaded with distload()) for the same sample of strings, it returns the perplexity
 # (see http://ai.cs.umbc.edu/icgi2012/challenge/Pautomac/description.php)
 def perplexity(dtarget, dcandidate):
@@ -93,6 +105,44 @@ def plot2(res, pid):
     plt.show()
 
 
+# this plot shows the difference between the distriburions obtained by using two PFAs on the same testing set
+# dists must be loaded in memory by using distload() method
+def plot3(dist1, dist2):
+    assert len(dist1) == len(dist2)
+    # plotting
+    xvs = [i for i in xrange(len(dist1))]
+    # xls = [str(i * mt.STEP) + "%" for i in xvs]
+    # plt.xticks(xvs, xls, rotation=45)
+    plt.plot(xvs, dist1, color="r", label="D1")
+    plt.plot(xvs, dist2, color="b", label="D2")
+    plt.plot(xvs, [abs(dist1[i] - dist2[i]) for i in xrange(len(dist1))], color="y", label="ABS-DIFF")
+    # plt.xlabel('Correct bounds %')
+    # plt.ylabel('Perplexity')
+    # plt.title('Problem ' + str(pid))
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+
+# this plot shows the difference between the probabilities obtained by using two PFAs on the same testing set
+# dists must be loaded in memory by using probload() method
+def plot4(prob1, prob2):
+    assert len(prob1) == len(prob2)
+    # plotting
+    xvs = [i for i in xrange(len(prob1))]
+    # xls = [str(i * mt.STEP) + "%" for i in xvs]
+    # plt.xticks(xvs, xls, rotation=45)
+    plt.plot(xvs, prob1, color="r", label="D1")
+    plt.plot(xvs, prob2, color="b", label="D2")
+    plt.plot(xvs, [abs(prob1[i] - prob2[i]) for i in xrange(len(prob1))], color="y", label="ABS-DIFF")
+    # plt.xlabel('Correct bounds %')
+    # plt.ylabel('Perplexity')
+    # plt.title('Problem ' + str(pid))
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+
 # main method for the evaluation.
 # it prints out the perplexity of the sliding window compared with the segmentation.
 # all the segmentations are reported, and the respective values are averaged on the takes.
@@ -113,7 +163,7 @@ def aggregate():
     # step 1) to 8)
     # @todo ocio qui
     # for pp in mt.PAUTPROBS:
-    for pp in xrange(1, 18, 1):
+    for pp in xrange(1, 5, 1):
         res[pp] = {}
         print "computing solutions for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
@@ -159,9 +209,13 @@ if __name__ == "__main__":
     # g = distload(go)
     # print len(c), len(g)
     # print perplexity(g, c)
-    aggregate()
+    # aggregate()
     # [6, 7, 9, 11, 13, 16, 18, 24, 26, 27, 32, 35, 40, 42, 47, 48]
     # rs = pk.load(open(mt.RESDIR + "results.bin"))
     # for pid in mt.PAUTPROBS:
     #     plot(rs, pid)
     # plot2(rs, 4)
+    d1 = "/home/nino/Scrivania/pr.sol"
+    d2 = "/home/nino/Scrivania/ss.sol"
+    g = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/4/gold/solution.txt"
+    plot4(probload(g), probload(d2))

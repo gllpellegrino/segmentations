@@ -86,6 +86,9 @@ def mdload(path):
     f = [0.] * len(q)
     s = [[0. for _ in sigma] for _ in q]
     t = [[[1. if (q0, sy, q1) in delta else 0. for q1 in q] for q0 in q] for sy in sigma]
+    # adding self loops in the sink state
+    for sy in sigma:
+        t[sy][-1][-1] = 1.
     return i, f, s, t
 
 
@@ -129,8 +132,8 @@ def estimate((i, f, s, t), inpath):
     for sess in sessionize(inpath):
         cs = ss
         for ix in xrange(len(sess)):
-            if cs is None:
-                break
+            # if cs is None:
+            #     break
             # sy is the current symbol
             sy = sess[ix]
             # we are visiting cs, so we update the reachability counts
@@ -138,7 +141,8 @@ def estimate((i, f, s, t), inpath):
             # sess[ix] is a symbol, that we are seeing in cs. We update the emission counts.
             em[cs][sy] += 1
             # now we move to the next state
-            fs = None
+            # fs = None
+            fs = -1
             for jx in xrange(len(t[sy][cs])):
                 if t[sy][cs][jx] > 0.:
                     fs = jx
@@ -170,18 +174,18 @@ def evaluate((i, f, s, t), sessions, oupath):
         cs, pr, = ss, i[ss]
         # cs, pr = 0, 1.
         for sy in sess:
-            if cs is None:
-                break
+            # if cs is None:
+            #     break
             # updating the probability
             pr *= (1. - f[cs]) * s[cs][sy]
+            if pr == 0.:
+                print sy, cs, f[cs], s[cs][sy]
             # looking for the next state
-            ns = None
+            ns = -1
             for ix in xrange(len(t[sy][cs])):
                 if t[sy][cs][ix] > 0.:
                     ns = ix
                     break
-            if ns is None:
-                print cs, sy, sess
             cs = ns
         prs.append(pr * f[cs]) if cs is not None else prs.append(0.)
     # writing the solution file
@@ -199,15 +203,16 @@ def mdtrain(inpath, oupath):
 
 if __name__ == "__main__":
     mut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/train.rti"
-    mut2 = "/home/nino/Scrivania/canc.train"
+    mut2 = "/home/nino/Scrivania/ss.train"
     mut3 = "/home/nino/Scrivania/canc.rti"
     tut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.rtimd"
-    tut2 = "/home/nino/Scrivania/canc.rtimd"
+    tut2 = "/home/nino/Scrivania/ss.rtimd"
     rut = "/home/nino/Scrivania/canc.pa"
     dut = "/home/nino/Scrivania/canc.dot"
     gut = "/home/nino/PycharmProjects/segmentation/pautomac/26/26.pautomac_model.txt"
     sut = "/home/nino/Scrivania/canc.sol"
     eut = "/home/nino/PycharmProjects/segmentation/exp2/results/26/gold/train.ptm"
+    eut2 = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/4/gold/test.ptm"
     put = "/home/nino/PycharmProjects/segmentation/exp2/results/26/seg_100/take_8/model.pa"
 
     # mdut = mdload(tut)
@@ -242,5 +247,5 @@ if __name__ == "__main__":
     # print mdut[1]
 
     # import pautomac_utility as pu
-    # evaluate(mdut2, pu.sessionize(eut), sut)
-    pu.evaluate(mdut2, mut2, sut)
+    evaluate(mdut2, pu.sessionize(eut2), sut)
+    # pu.evaluate(mdut2, mut2, sut)

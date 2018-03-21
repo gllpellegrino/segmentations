@@ -58,6 +58,35 @@ def torti(sg, path):
                 oh.write(" " + str(ssy) + " 0")
 
 
+# stores a segmentation loaded with load() in treba format
+def totreba(sg, path):
+    with open(path, "w") as oh:
+        first, ind, sess = True, 0, []
+        print list(sg["bins"])[:20]
+        for sy in sg["seq"]:
+            if ind in sg["nbins"]:
+                sess.append(sy)
+            else:
+                if first:
+                    first = False
+                    print sess
+                    oh.write(str(sess[0]))
+                    for ssy in sess[1:]:
+                        oh.write(" " + str(ssy))
+                    oh.write(" " + str(sy))
+                else:
+                    oh.write("\n" + str(sess[0]))
+                    for ssy in sess[1:]:
+                        oh.write(" " + str(ssy))
+                    oh.write(" " + str(sy))
+                sess = []
+            ind += 1
+        if sess:
+            oh.write("\n" + str(sess[0]))
+            for ssy in sess[1:]:
+                oh.write(" " + str(ssy))
+
+
 # stores a segmentation loaded with load() in pautomac format
 def topautomac(sg, path):
     with open(path, "w") as oh:
@@ -222,6 +251,6 @@ if __name__ == "__main__":
     sgg = load(ru.streamize(sp))
     print sgg
     sgg2 = debound(sgg, 3)
-    torti(sgg2, sp + ".canc")
+    totreba(sgg2, sp + ".canc")
     print sgg2
     print bound(sgg2, 0)

@@ -237,20 +237,19 @@ if __name__ == "__main__":
     import pautomac_utility as pu
     import exp3.analyze as an
     import rti_utility as ru
-    pid = 1
+    pid = 24
     # creating the segmentations
     tr = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/" + str(pid) + "/gold/train.ptm"
     cbp = "/home/nino/Scrivania/cbounds.txt"
-    n = int(.0 * 20000)
-    coseg = su.debound(su.load(pu.streamize(tr)), n)
-    su.torti(coseg, cbp)
-    coseg2 = su.debound(su.load(pu.streamize(tr)), 0)
+    n = int(1. * 20000)
+    cosegN = su.debound(su.load(pu.streamize(tr)), n)
+    su.torti(cosegN, cbp)
+    cosegZERO = su.debound(su.load(pu.streamize(tr)), 0)
     prseg = "/home/nino/Scrivania/pr.train"
-    psg = su.bound(coseg2, 20000)
+    psg = su.bound(cosegZERO, 20000)
     su.torti(psg, prseg)
     sseg = "/home/nino/Scrivania/ss.train"
-    print "cazzone", len(coseg['bins']), 3, 20000-n
-    ssgm = bound(coseg, 3, 20000 - n)
+    ssgm = bound(cosegN, 3, 20000 - n)
     su.torti(ssgm, sseg)
     print "PRN"
     su.evaluate(su.load(pu.streamize(tr)), su.load(ru.streamize(prseg)))
@@ -263,9 +262,11 @@ if __name__ == "__main__":
     ssrti = "/home/nino/Scrivania/ss.rtimd"
     ru.mdtrain(sseg, ssrti)
     ssmd = ru.estimate(ru.mdload(ssrti), sseg)
+    print ssmd
+    pu.mdtodot(ssmd, "/home/nino/Scrivania/ss.pa")
     # creating solutions
     gdsol = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/" + str(pid) + "/gold/solution.txt"
-    swsol = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/" + str(pid) + "/sw/solution.txt"
+    # swsol = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/" + str(pid) + "/sw/solution.txt"
     prsol = "/home/nino/Scrivania/pr.sol"
     sssol = "/home/nino/Scrivania/ss.sol"
     ev = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/" + str(pid) + "/gold/test.ptm"
@@ -273,10 +274,10 @@ if __name__ == "__main__":
     pu.evaluate(ssmd, ev, sssol)
     # loading distributions
     gd = an.distload(gdsol)
-    sw = an.distload(swsol)
+    # sw = an.distload(swsol)
     pr = an.distload(prsol)
-    ss = an.distload(sssol)
+    ses = an.distload(sssol)
     # perplexity
-    print "SW", an.perplexity(gd, sw)
+    # print "SW", an.perplexity(gd, sw)
     print "PR", an.perplexity(gd, pr)
-    print "SS", an.perplexity(gd, ss)
+    print "SS", an.perplexity(gd, ses)

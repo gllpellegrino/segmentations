@@ -168,7 +168,7 @@ def aggregate():
         print "computing solutions for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # step 2)
-        gp = ppdir + "gold/solution.txt"
+        gp = mt.PAUTDIR + str(pp) + "/" + str(pp) + ".pautomac_solution.txt"
         gd = distload(gp)
         # step 3)
         swp = ppdir + "sw/solution.txt"

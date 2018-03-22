@@ -66,17 +66,13 @@ def setup():
         print "setting up the gold"
         emd = mt.PAUTDIR + str(pp) + "/" + str(pp) + ".pautomac_model.txt"
         edir = ppdir + "gold/"
-        gtr, gts = edir + "train.ptm", edir + "test.ptm"
+        gtr = edir + "train.ptm"
         if not exists(edir):
             mkdir(edir)
         md = pu.mdload(emd)
         if not exists(gtr):
             pu.sample(md, mt.TRAINSIZE, gtr)
         print "gold training set up"
-        pu.SEED += 1
-        if not exists(gts):
-            pu.sample(md, mt.TESTSIZE, gts)
-        print "gold testing set up"
         print "setting up the sliding window"
         # STEP 2) now we generate train for the sliding window model
         edir = ppdir + "sw/"
@@ -89,17 +85,6 @@ def setup():
             pu.toslided(gtr, wsize, etr)
             pu.torti(etr, ert)
         print "sliding window training set up"
-        # # STEP 3) now we generate the fully random train file
-        # edir = ppdir + "rn/"
-        # etr = edir + "pr.rti"
-        # if not exists(edir):
-        #     mkdir(edir)
-        # if not exists(etr):
-        #     sgd = su.load(pu.streamize(gtr))
-        #     sgc = su.debound(sgd, 0)
-        #     srn = su.bound(sgc, mt.TRAINSIZE - 1)
-        #     su.torti(srn, etr)
-        # print "totally random training set up"
         # STEP 4) now we can start
         pu.SEED += 1
         for tc in xrange(0, 100 + mt.STEP, mt.STEP):
@@ -149,7 +134,7 @@ if __name__ == "__main__":
     # clean()
     setup()
 
-    # for i in xrange(1, 49):
+    # for i in mt.PAUTPROBS:
     #     ppdir = mt.RESDIR + str(i) + "/"
     #     for tc in xrange(0, 100 + mt.STEP, mt.STEP):
     #         tcdir = ppdir + "seg_" + str(tc) + "/"

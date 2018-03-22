@@ -15,6 +15,8 @@ from scipy import stats as ts
 SEED = 1984
 # maximal session length allowd when sampling
 SESSLIMIT = 1000
+# conventional null symbol (used when we extract emtpy sequences)
+EPSILON = -1
 
 # ---------------------------
 # average string size
@@ -43,56 +45,33 @@ def streamize(path):
             # pay attention here, we do not skip possible empty sessions
             for vl in values[:-1]:
                 yield (vl, False)
-            yield (values[-1], True)
+            yield (values[-1], True) if values else (EPSILON, True)
 
 
 # given a pautomac training file, it generates slided windows of size size.
 def windowize(path, size):
     window = []
     for sym, _ in streamize(path):
-        if len(window) < size:
-            window.append(sym)
-        else:
-            yield window
-            window = window[1:] + [sym]
+        # if we encounter an empty session, we haven't seen a symbol to add to the current window
+        if sym != EPSILON:
+            if len(window) < size:
+                window.append(sym)
+            else:
+                yield window
+                window = window[1:] + [sym]
     yield window
 
 
-# # given a pautomac training file, it generates all the sessions (strings).
-# def sessionize(path):
-#     session = []
-#     for sym, end in streamize(path):
-#         if not end:
-#             session.append(sym)
-#         else:
-#             yield session + [sym]
-#             session = []
-
-
 # given the path to a gold pautomac formatted training sample,
-# and the percentage of correct bounds selected from the gold sample; it is a value in [0.0,1.0],
 # this iterator return the corresponsing sessions
-def sessionize(gpath, rb=1.):
-    # first we need to pick up the amount of correct bounds
-    bns = meta(gpath)[SESSIONS]
-    ncor = int(rb * bns)
-    # now we need to randomly select tos correct bounds and leave the rest
-    ind, correct = 0, []
+def sessionize(gpath):
+    sess = []
     for sym, end in streamize(gpath):
         if end:
-            correct.append(ind)
-        ind += 1
-    rn.seed(SEED)
-    sel = set(rn.sample(correct, ncor))
-    # now we can return the sessions
-    ind, sess = 0, []
-    for sym, _ in streamize(gpath):
-        if ind in sel:
-            yield sess + [sym]
+            yield sess + [sym] if sym != EPSILON else sess
             sess = []
-        else:
+        elif sym != EPSILON:
             sess.append(sym)
-        ind += 1
 
 
 # given a pautomac training file, it extracts several meta-informations as the average string size.
@@ -134,43 +113,6 @@ def toslided(inpath, wsize, oupath):
 
 
 # given a pautomac training/testing file, exports it to the RTI+ format.
-# rb is the percentage of correct bounds included into the exported file; it is a value in [0.0,1.0],
-# if set < 1.0, the remaining bounds are set by random.
-def torti_old(inpath, oupath, rb=1.):
-    metas = meta(inpath)
-    asize, bsize = metas[ALPHA], metas[SESSIONS]
-    # first we need to determine the bounds to include into the exported file
-    ind, correct, others = 0, [], []
-    for sym, end in streamize(inpath):
-        if end:
-            correct.append(ind)
-        else:
-            others.append(ind)
-        ind += 1
-    rn.seed(SEED)
-    ncorr = int(rb * bsize)
-    bounds = rn.sample(correct, ncorr)
-    correct = [vl for vl in correct if vl not in bounds]
-    bounds = set(bounds + rn.sample(others + correct, bsize - ncorr))
-    # time to export the file
-    with open(oupath, "w") as oh:
-        oh.write(str(bsize) + " " + str(asize))
-        ind, wind = 0, []
-        for sym, _ in streamize(inpath):
-            if ind not in bounds:
-                wind.append(sym)
-            else:
-                # time to print
-                oh.write("\n" + str(len(wind) + 1))
-                for wsy in wind:
-                    oh.write(" " + str(wsy) + " 0")
-                oh.write(" " + str(sym) + " 0")
-                # ok, now reset
-                wind = []
-            ind += 1
-
-
-# given a pautomac training/testing file, exports it to the RTI+ format.
 def torti(inpath, oupath):
     metas = meta(inpath)
     asize, bsize = metas[ALPHA], metas[SESSIONS]
@@ -178,16 +120,17 @@ def torti(inpath, oupath):
         oh.write(str(bsize) + " " + str(asize))
         ind, wind = 0, []
         for sym, flg in streamize(inpath):
-            if not flg:
-                wind.append(sym)
-            else:
-                # time to print
-                oh.write("\n" + str(len(wind) + 1))
-                for wsy in wind:
-                    oh.write(" " + str(wsy) + " 0")
-                oh.write(" " + str(sym) + " 0")
-                # ok, now reset
-                wind = []
+            if sym != EPSILON:
+                if not flg:
+                    wind.append(sym)
+                else:
+                    # time to print
+                    oh.write("\n" + str(len(wind) + 1))
+                    for wsy in wind:
+                        oh.write(" " + str(wsy) + " 0")
+                    oh.write(" " + str(sym) + " 0")
+                    # ok, now reset
+                    wind = []
             ind += 1
 
 
@@ -308,7 +251,7 @@ def sample((i, f, s, t), howmany, path):
             # sampling the initial state
             cs, sess = list(ind.rvs(size=1))[0], []
             while True:
-                # PLEASE NOTE: we do notgenerate empty sequences at the moment
+                # PLEASE NOTE: we do not generate empty sequences at the moment
                 # since RTI+ crashes with empty sequences
                 if sess and (f[cs] >= rn.random() or len(sess) > SESSLIMIT):
                     break
@@ -351,11 +294,12 @@ def _prob((i, f, s, t), session, index, state, dp):
     # general case: for every possible next state s, compute Probability += P(symbol)*P(transition to s)*P(future)
     sprob, fprob = s[state][session[index]], f[state]
     prob = 0.
+    # print "cancme", state, session[index], len(t[session[index]])
     for nextstate in range(len(t[session[index]][state])):
         if t[session[index]][state][nextstate] > 0.:
             tprob = t[session[index]][state][nextstate]
-            fprob = _prob((i, f, s, t), session, index + 1, nextstate, dp)
-            prob += (1. - fprob) * sprob * tprob * fprob
+            futprob = _prob((i, f, s, t), session, index + 1, nextstate, dp)
+            prob += (1. - fprob) * sprob * tprob * futprob
     # we store the subproblem in the dynamic programming table
     dp[sp] = prob
     return prob
@@ -387,7 +331,7 @@ def evaluate((i, f, s, t), inpath, oupath):
 
 
 if __name__ == "__main__":
-    put = "/mnt/ata-TOSHIBA_MQ01ABD100_52DOT1CIT-part1/SEGMENTATIONS/results/21/gold/train.ptm"
+    put = "/home/nino/Scrivania/toy.train.canc"
     rut = "/home/nino/Scrivania/canc.rti"
     mut = "/home/nino/PycharmProjects/segmentation/exp2/results/24/seg_100/take_8/model.pa"
     dut = "/home/nino/Scrivania/canc2.dot"
@@ -404,14 +348,17 @@ if __name__ == "__main__":
     # print meta(put)
     # for w in windowize(put, 3):
     #     print w
-    # for w in sessionize(put):
-    #     print w
+    for w in sessionize(put):
+        print w
     # torti(put, rut, .3)
     # x = mdload(mut)
     # print x
     # sample(x, 100, sut)
     # mdtodot(x, dut)
     # evaluate(x, sut, eut)
-    toslided(put, 5, wut)
-    torti(wut, rut)
+    # toslided(put, 5, wut)
+    # torti(wut, rut)
     # mdstore(x, nut)
+    # x = mdload(mut)
+    # print x
+    # print probability(x, [])

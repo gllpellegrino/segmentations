@@ -19,6 +19,8 @@ TREGEX = r"^(-?\d+) (\d+) (\d+) ([+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?)"
 FREGEX = r"^(-?\d+) ((\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?)"
 # triba learning command line
 TRB_COMMAND = "/home/nino/bin/treba/bin/linux64/treba --train=merge {TRAIN} > {MODEL}"
+# conventional null symbol (used when we extract emtpy sequences)
+EPSILON = -1
 
 
 # this method loads a model, inferred by treba, in memory
@@ -50,7 +52,7 @@ def mdload(path):
     i = [1. if st == 0 else 0. for st in q]
     f = [phi[st] if st in phi else 0. for st in q]
     s = [[teta[(st, sy)] if (st, sy) in teta else 0. for sy in sigma] for st in q]
-    t = [[[delta[(ss, sy, ds)] if (ss, sy, ds) in delta else 0. for ds in q] for sy in sigma] for ss in q]
+    t = [[[delta[(ss, sy, ds)] if (ss, sy, ds) in delta else 0. for ds in q] for ss in q] for sy in sigma]
     return i, f, s, t
 
 
@@ -70,12 +72,11 @@ def streamize(path):
             # pay attention here, we do not skip possible empty sessions
             for vl in values[:-1]:
                 yield (vl, False)
-            yield (values[-1], True)
+            yield (values[-1], True) if values else (EPSILON, True)
 
 
 if __name__ == "__main__":
-    mp = "/home/nino/bin/treba/bin/linux64/canc.fsm"
+    mp = "/home/nino/Scrivania/pr.rtimd"
     fp = "/home/nino/Scrivania/pr.train"
-    mdload(mp)
-    for v in streamize(fp):
-        print v
+    i, f, s, t = mdload(mp)
+    print len(t[0])

@@ -50,18 +50,13 @@ def evaluate():
     # 5)        for each take
     # 6)            Generate the solution
     # ----------------------------------------------------------
-    # for pp in mt.PAUTPROBS:
+    for pp in mt.PAUTPROBS:
     # @todo ocio qui
-    for pp in xrange(24, 25, 1):
+    # for pp in xrange(24, 25, 1):
         print "evaluating for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
-        # special case: gold
-        print "generating the solution for the gold case"
-        mdpath = mt.PAUTDIR + str(pp) + "/" + str(pp) + ".pautomac_model.txt"
-        evpath = ppdir + "gold/test.ptm"
-        solpath = ppdir + "gold/solution.txt"
-        md = pu.mdload(mdpath)
-        pu.evaluate(md, evpath, solpath)
+        # print "generating the solution for the gold case"
+        evpath = mt.PAUTDIR + str(pp) + "/" + str(pp) + ".pautomac.test"
         # special case: sliding window
         print "generating the solution for the sliding window case"
         solpath = ppdir + "sw/solution.txt"
@@ -79,12 +74,13 @@ def evaluate():
                 prmdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/prn.pa"
                 prmd = pu.mdload(prmdpath)
                 # ru.evaluate(md, pu.sessionize(evpath), solpath)
-                pu.evaluate(prmd, evpath, prsolpath)
-                print "generaing the semi-supervised solution for take", tk
-                sssolpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.sol"
-                ssmdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
-                ssmd = pu.mdload(ssmdpath)
-                pu.evaluate(ssmd, evpath, sssolpath)
+                if tc > 0:
+                    pu.evaluate(prmd, evpath, prsolpath)
+                    print "generaing the semi-supervised solution for take", tk
+                    sssolpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.sol"
+                    ssmdpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
+                    ssmd = pu.mdload(ssmdpath)
+                    pu.evaluate(ssmd, evpath, sssolpath)
 
 
 if __name__ == "__main__":

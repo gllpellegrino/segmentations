@@ -49,8 +49,8 @@ def train():
     # -----------------------------------------------------------------------------------------------
     ru.RTI_CMD = mt.RTI_CMD
     #@todo ocio qua
-    # for pp in mt.PAUTPROBS:
-    for pp in xrange(24, 25, 1):
+    for pp in mt.PAUTPROBS:
+    # for pp in xrange(24, 25, 1):
         print "learning automata for Pautomac problem number", pp
         ppdir = mt.RESDIR + str(pp) + "/"
         # special case: sliding window
@@ -91,20 +91,21 @@ def train():
                     md = ru.estimate(ru.mdload(mdrpath), trpath)
                     pu.mdstore(md, mdepath)
                 # handling the semi supervised model
-                srpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rti"
-                sdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rtimd"
-                sdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
-                if exists(sdrpath):
-                    print "\trti model for semi-supervised segmentation trained already"
-                    if exists(sdepath):
-                        print "\trti model for semi-supervised segmentation converted to Pautomac already"
+                if tc > 0:
+                    srpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rti"
+                    sdrpath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.rtimd"
+                    sdepath = ppdir + "seg_" + str(tc) + "/take_" + str(tk) + "/sss.pa"
+                    if exists(sdrpath):
+                        print "\trti model for semi-supervised segmentation trained already"
+                        if exists(sdepath):
+                            print "\trti model for semi-supervised segmentation converted to Pautomac already"
+                        else:
+                            md = ru.estimate(ru.mdload(sdrpath), srpath)
+                            pu.mdstore(md, sdepath)
                     else:
+                        ru.mdtrain(srpath, sdrpath)
                         md = ru.estimate(ru.mdload(sdrpath), srpath)
                         pu.mdstore(md, sdepath)
-                else:
-                    ru.mdtrain(srpath, sdrpath)
-                    md = ru.estimate(ru.mdload(sdrpath), srpath)
-                    pu.mdstore(md, sdepath)
 
 
 if __name__ == "__main__":

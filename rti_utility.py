@@ -78,17 +78,12 @@ def mdload(path):
                 q.add(ss)
                 sigma.add(sy)
                 delta.add((ss, sy, ds))
-    # # adding artificial self-loops in the sink state
-    # for sx in sigma:
-    #     delta.add((-1, sx, -1))
     # second, we allocate the model
     i = [1. if qx == 0 else 0. for qx in q]
     f = [0.] * len(q)
     s = [[0. for _ in sigma] for _ in q]
-    t = [[[1. if (q0, sy, q1) in delta else 0. for q1 in q] for q0 in q] for sy in sigma]
-    # adding self loops in the sink state
-    for sy in sigma:
-        t[sy][-1][-1] = 1.
+    # PLEASE NOTE: we add self loops in the sink state (id = -1)
+    t = [[[1. if (q0, sy, q1) in delta or (q0 == -1 and q1 == -1) else 0. for q1 in q] for q0 in q] for sy in sigma]
     return i, f, s, t
 
 

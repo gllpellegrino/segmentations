@@ -20,6 +20,8 @@ from sortedcontainers import SortedList
 
 # seed for the random selection of the boundaries
 SEED = 1984
+# conventional null symbol (for empty sessions)
+EPSILON = -1
 
 
 # load a segmentation in memory by using streamize() of pautomac_utility.py or rti_utility.py
@@ -27,13 +29,16 @@ def load(stream):
     sg = {"bins": SortedList([]), "nbins": set(), "alph": set(), "seq": [], "pool": set()}
     ind = 0
     for sy, fl in stream:
-        sg["seq"].append(sy)
-        sg["alph"].add(sy)
-        if fl:
-            sg["bins"].add(ind)
-        else:
-            sg["nbins"].add(ind)
-        ind += 1
+        # PLEASE NOTE: streamize() in Pautomac may have empty sequences in it.
+        # we just discard those sequences.
+        if sy != EPSILON:
+            sg["seq"].append(sy)
+            sg["alph"].add(sy)
+            if fl:
+                sg["bins"].add(ind)
+            else:
+                sg["nbins"].add(ind)
+            ind += 1
     return sg
 
 
@@ -62,14 +67,11 @@ def torti(sg, path):
 def totreba(sg, path):
     with open(path, "w") as oh:
         first, ind, sess = True, 0, []
-        print list(sg["bins"])[:20]
         for sy in sg["seq"]:
-            if ind in sg["nbins"]:
-                sess.append(sy)
-            else:
+            sess.append(sy)
+            if ind in sg["bins"]:
                 if first:
                     first = False
-                    print sess
                     oh.write(str(sess[0]))
                     for ssy in sess[1:]:
                         oh.write(" " + str(ssy))
